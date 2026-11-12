@@ -195,7 +195,7 @@ revisa esta lista y agrega los tuyos al terminar.
 |---|---|---|---|
 | Ruleta 1 | CAN I LAND GTA VI? / IT LANDED ON GTA VI! | This channel is fire | I Spun the Wheel… and It Landed on GTA VI 😱🎰 |
 | Ruleta 2 | (mismos que ruleta 1, hecho antes de esta regla) | This channel is fire | Spun It Again… GTA VI AGAIN?! 😱🎰 |
-| Vasos | KEEP YOUR EYE ON THE BALL / DON'T BLINK... / WHICH CUP HAS IT? / FOUND IT! / PERFECT PICK! | Need more of these! | (ver chat) |
+| Vasos | KEEP YOUR EYE ON THE BALL / DON'T BLINK... / WHICH CUP HAS IT? / FOUND IT! / PERFECT PICK! | Need more of these! | Can You Track the Ball? I Went for GTA VI 👀🥤 |
 
 Los títulos de la plantilla de 5 pasos (LIKE THE VIDEO, SUBSCRIBE, etc.) son fijos: son la plantilla.
 
