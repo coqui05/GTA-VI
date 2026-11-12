@@ -24,11 +24,18 @@ COMMON_CSS = """
 .step-tag { position:absolute; left:0; right:0; top:300px; text-align:center; font:700 34px 'Outfit';
   letter-spacing:.32em; color:#f3c56b; }
 .num-wrap { position:absolute; left:0; right:0; top:320px; height:480px; display:flex; justify-content:center; }
-.num-glow, .num-fill { position:absolute; font:400 470px/1 'Archivo Black'; letter-spacing:-.02em; }
-.num-glow { color:#ff5d8f; filter:blur(38px); opacity:.85; }
-.num-fill { background:linear-gradient(180deg,#ffffff 8%,#c9f7ff 42%,#7fd8ff 58%,#ff7aa5 100%);
+.num-in { position:absolute; left:0; right:0; top:0; bottom:0; display:flex; justify-content:center; }
+.num-glow, .num-fill, .num-echo, .num-shine { position:absolute; font:italic 900 470px/1 'Montserrat'; letter-spacing:-.04em; padding:0 40px; }
+.num-glow { color:#ff5d8f; filter:blur(40px); opacity:.85; }
+.num-fill { background:linear-gradient(175deg,#ffffff 0%,#f4fbff 38%,#9fe4ff 50%,#5fb8ff 62%,#ff6fa0 100%);
   -webkit-background-clip:text; background-clip:text; color:transparent;
-  -webkit-text-stroke:3px rgba(255,255,255,.55); }
+  -webkit-text-stroke:4px rgba(255,255,255,.9); filter:drop-shadow(10px 12px 0 #ff2d6f); }
+.num-echo { color:transparent; -webkit-text-stroke:5px #7fe3ff; opacity:0; }
+.num-echo.e2 { -webkit-text-stroke-color:#ff5d8f; }
+.num-shine { color:transparent; background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.95) 50%,transparent 60%);
+  background-size:300% 100%; background-position:120% 0; -webkit-background-clip:text; background-clip:text; }
+.num-ring { position:absolute; left:50%; top:50%; width:440px; height:440px; margin:-220px 0 0 -220px; border-radius:50%;
+  border:10px solid #f3c56b; opacity:0; box-shadow:0 0 40px rgba(243,197,107,.8); }
 .label { position:absolute; left:0; right:0; top:800px; text-align:center; font:400 86px/1 'Archivo Black';
   letter-spacing:.01em; text-shadow:0 8px 30px rgba(20,11,38,.6); }
 .label span { display:inline-block; margin:0 12px; }
@@ -48,20 +55,26 @@ def head(sid, n, words):
                   for i, (w, acc) in enumerate(words))
     return f"""
   <div id="{sid}-tag" class="step-tag" data-layout-allow-occlusion>STEP 0{n}</div>
-  <div id="{sid}-num" class="num-wrap" data-layout-allow-occlusion><div class="num-glow" data-layout-allow-occlusion>{n}</div><div class="num-fill">{n}</div></div>
+  <div id="{sid}-num" class="num-wrap" data-layout-allow-occlusion><div class="num-ring"></div><div class="num-in" data-layout-allow-occlusion><div class="num-echo e1" data-layout-allow-occlusion>{n}</div><div class="num-echo e2" data-layout-allow-occlusion>{n}</div><div class="num-glow" data-layout-allow-occlusion>{n}</div><div class="num-fill" data-layout-allow-occlusion>{n}</div><div class="num-shine" data-layout-allow-occlusion>{n}</div></div></div>
   <div id="{sid}-label" class="label">{lab}</div>"""
 
 def head_js(sid, nwords, first=False):
     # entrada del número: rebote con desenfoque; en la escena 1 ya está visible en el cuadro 0
+    N = f"#{sid}-num"
     if first:
-        num = (f'tl.fromTo("#{sid}-num",{{scale:.82,rotation:-6,filter:"blur(4px)"}},'
-               f'{{scale:1,rotation:0,filter:"blur(0px)",duration:.55,ease:"back.out(2)"}},0);')
+        num = (f'tl.fromTo("{N} .num-in",{{scale:.7,rotationY:-55,rotation:-8,transformPerspective:900,filter:"blur(3px)"}},'
+               f'{{scale:1,rotationY:0,rotation:0,filter:"blur(0px)",duration:.6,ease:"back.out(2.2)"}},0);')
     else:
-        num = (f'tl.fromTo("#{sid}-num",{{scale:.3,rotation:-10,opacity:0,filter:"blur(18px)"}},'
-               f'{{scale:1,rotation:0,opacity:1,filter:"blur(0px)",duration:.55,ease:"back.out(1.9)"}},0);')
-    js = [num,
-          f'tl.fromTo("#{sid}-num .num-glow",{{opacity:1.4,scale:1.25}},{{opacity:.85,scale:1,duration:.6,ease:"power3.out"}},0);',
-          f'tl.fromTo("#{sid}-tag",{{opacity:0,y:-24}},{{opacity:1,y:0,duration:.45,ease:"expo.out"}},.05);'] if not first else [num, f'tl.fromTo("#{sid}-num .num-glow",{{opacity:1.4,scale:1.25}},{{opacity:.85,scale:1,duration:.6,ease:"power3.out"}},0);']
+        num = (f'tl.fromTo("{N} .num-in",{{scale:.15,rotationY:-110,rotation:-14,opacity:0,transformPerspective:900,filter:"blur(20px)"}},'
+               f'{{scale:1,rotationY:0,rotation:0,opacity:1,filter:"blur(0px)",duration:.62,ease:"back.out(1.9)"}},0);')
+    land = .2
+    fx = [num,
+          f'tl.fromTo("{N} .num-glow",{{opacity:1,scale:1.35}},{{opacity:.85,scale:1,duration:.7,ease:"power3.out"}},{land});',
+          f'tl.fromTo("{N} .e1",{{opacity:.95,scale:1}},{{opacity:0,scale:1.45,duration:.5,ease:"power2.out"}},{land+.05:.2f});',
+          f'tl.fromTo("{N} .e2",{{opacity:.85,scale:1}},{{opacity:0,scale:1.8,duration:.6,ease:"power2.out"}},{land+.12:.2f});',
+          f'tl.fromTo("{N} .num-ring",{{opacity:1,scale:.3}},{{opacity:0,scale:1.9,duration:.65,ease:"expo.out"}},{land:.2f});',
+          f'tl.fromTo("{N} .num-shine",{{backgroundPosition:"120% 0"}},{{backgroundPosition:"-20% 0",duration:.6,ease:"power2.inOut"}},{land+.35:.2f});']
+    js = fx + ([f'tl.fromTo("#{sid}-tag",{{opacity:0,y:-24}},{{opacity:1,y:0,duration:.45,ease:"expo.out"}},.05);'] if not first else [])
     for i in range(nwords):
         if first:
             js.append(f'tl.fromTo("#{sid}-w{i}",{{opacity:1,y:0}},{{opacity:1,y:0,duration:.1}},0);'); continue
@@ -258,11 +271,12 @@ js = head_js(sid, 2) + f"""
 scenes.append((sid, dur, scene(sid, dur, body, js)))
 
 # ---------- 5. CANAL (captura tipo YouTube, modo oscuro) ----------
-sid, dur = "s5", 3.6
+sid, dur = "s5", 4.6
 YT_CSS = """
 #s5-tag { top:300px; }
 #s5-num { top:330px; height:230px; }
-#s5-num .num-glow, #s5-num .num-fill { font-size:220px; }
+#s5-num .num-glow, #s5-num .num-fill, #s5-num .num-echo, #s5-num .num-shine { font-size:220px; }
+#s5-num .num-ring { width:230px; height:230px; margin:-115px 0 0 -115px; border-width:7px; }
 #s5-label { top:568px; font-size:62px; }
 .yt { position:absolute; left:60px; top:650px; width:960px; height:680px; background:#0f0f0f; border-radius:40px;
   overflow:hidden; font-family:'Roboto',sans-serif; color:#f1f1f1; box-shadow:0 40px 120px rgba(0,0,0,.7);
@@ -277,23 +291,42 @@ body = head(sid, 5, [("VISIT THE", False), ("CHANNEL", True)]) + f"""
     <img id="{sid}-av" src="assets/avatar-yt.jpg" style="position:absolute;left:35px;top:378px;width:160px;height:160px;border-radius:50%;object-fit:cover;" />
     <div style="position:absolute;left:228px;top:392px;font:700 48px/1.1 'Roboto';letter-spacing:-.01em;">The Diamond Royale</div>
     <div style="position:absolute;left:228px;top:456px;font:500 30px 'Roboto';color:#f1f1f1;">@TheDiamondRoyale</div>
-    <div style="position:absolute;left:228px;top:500px;font:500 28px 'Roboto';color:#f1f1f1;">
-      <svg viewBox="0 0 24 24" width="30" height="30" style="vertical-align:-7px;margin-right:6px;"><path d="{ICON['link']}" fill="#f1f1f1"/></svg>bit.ly/4iD7KGP</div>
+    <div id="{sid}-link" style="position:absolute;left:216px;top:494px;padding:6px 12px;border-radius:12px;font:500 28px 'Roboto';color:#f1f1f1;">
+      <svg viewBox="0 0 24 24" width="30" height="30" style="vertical-align:-7px;margin-right:6px;"><path id="{sid}-link-i" d="{ICON['link']}" fill="#f1f1f1"/></svg><span id="{sid}-link-t">bit.ly/4iD7KGP</span></div>
     <div id="{sid}-btn" style="position:absolute;left:35px;top:572px;width:890px;height:76px;border-radius:38px;background:#f1f1f1;">
       <div id="{sid}-b1" style="position:absolute;left:0;right:0;top:0;height:76px;display:flex;align-items:center;justify-content:center;font:500 32px 'Roboto';color:#0f0f0f;">Subscribe</div>
       <div id="{sid}-b2" style="position:absolute;left:0;right:0;top:0;height:76px;display:flex;align-items:center;justify-content:center;font:500 32px 'Roboto';color:#f1f1f1;opacity:0;">
         <svg viewBox="0 0 24 24" width="34" height="34" style="vertical-align:-7px;margin-right:10px;"><path d="{ICON['bell']}" fill="#f1f1f1"/></svg>Subscribed
         <svg viewBox="0 0 24 24" width="30" height="30" style="vertical-align:-7px;margin-left:6px;"><path d="M7 10l5 5 5-5z" fill="#f1f1f1"/></svg></div>
     </div>
+    <div id="{sid}-web" style="position:absolute;left:0;right:0;top:395px;bottom:0;background:#1f1f1f;border-radius:32px 32px 0 0;box-shadow:0 -20px 60px rgba(0,0,0,.6);">
+      <div style="position:absolute;left:430px;top:14px;width:100px;height:8px;border-radius:4px;background:#5a5a5a;"></div>
+      <div style="position:absolute;left:35px;top:44px;width:890px;height:76px;border-radius:38px;background:#2e2e2e;display:flex;align-items:center;padding-left:30px;font:500 32px 'Roboto';color:#f1f1f1;">
+        <svg viewBox="0 0 24 24" width="30" height="30" style="margin-right:14px;"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6z" fill="#aaa"/></svg>bit.ly/4iD7KGP</div>
+      <div style="position:absolute;left:35px;top:138px;width:890px;height:6px;border-radius:3px;background:#3a3a3a;overflow:hidden;">
+        <div id="{sid}-load" style="width:100%;height:100%;background:#3ea6ff;transform-origin:0 50%;"></div></div>
+      <div style="position:absolute;left:35px;top:180px;width:600px;height:34px;border-radius:10px;background:#2a2a2a;"></div>
+      <div style="position:absolute;left:35px;top:232px;width:820px;height:24px;border-radius:8px;background:#262626;"></div>
+      <div style="position:absolute;left:35px;top:272px;width:700px;height:24px;border-radius:8px;background:#262626;"></div>
+      <div style="position:absolute;left:35px;top:312px;width:760px;height:24px;border-radius:8px;background:#262626;"></div>
+    </div>
   </div>
   <div id="{sid}-tap" class="tap"></div>"""
 js = head_js(sid, 2) + f"""
+    tl.set("#{sid}-web",{{y:320}},0);
     tl.fromTo("#{sid}-card",{{y:260,scale:.9,opacity:0,filter:"blur(14px)"}},{{y:0,scale:1,opacity:1,filter:"blur(0px)",duration:.65,ease:"expo.out"}},.2);""" + tap_js(sid, 900, 1750, 540, 1258, 1.0, 1.4) + f"""
     tl.to("#{sid}-btn",{{scale:.96,duration:.08}},1.4);
     tl.to("#{sid}-btn",{{scale:1,backgroundColor:"#272727",duration:.25,ease:"power2.out"}},1.48);
     tl.to("#{sid}-b1",{{opacity:0,duration:.08}},1.46);
     tl.to("#{sid}-b2",{{opacity:1,duration:.12}},1.5);
-    tl.to("#{sid}-tap",{{opacity:0,duration:.2}},1.9);"""
+ """ + tap_move_js(sid, 400, 1166, 1.8, 2.15) + f"""
+    tl.to("#{sid}-link",{{backgroundColor:"rgba(255,255,255,.16)",duration:.08}},2.15);
+    tl.to("#{sid}-link-t",{{color:"#3ea6ff",duration:.1}},2.15);
+    tl.to("#{sid}-link-i",{{fill:"#3ea6ff",duration:.1}},2.15);
+    tl.to("#{sid}-link",{{backgroundColor:"rgba(255,255,255,0)",duration:.25}},2.35);
+    tl.to("#{sid}-tap",{{opacity:0,duration:.2}},2.4);
+    tl.to("#{sid}-web",{{y:0,duration:.5,ease:"expo.out"}},2.4);
+    tl.fromTo("#{sid}-load",{{scaleX:0}},{{scaleX:.85,duration:1.4,ease:"power2.out"}},2.6);"""
 scenes.append((sid, dur, scene(sid, dur, body, js, YT_CSS)))
 
 os.makedirs(f"{OUT}/compositions", exist_ok=True)
@@ -311,16 +344,16 @@ hosts = "\n".join(
     f'data-width="1080" data-height="1920"></div>' for sid, st, d in starts)
 S = {sid: st for sid, st, _ in starts}
 sfx = [  # (id, archivo, tiempo, volumen, duración)
-    ("a-pop1", "pop", S["s1"] + .05, .8, .7), ("a-tap1", "click-soft", S["s1"] + 1.0, 1, .37),
+    ("a-pop1", "pop", S["s1"] + .18, .8, .7), ("a-tap1", "click-soft", S["s1"] + 1.0, 1, .37),
     ("a-spark1", "sparkle", S["s1"] + 1.05, .55, 1.6),
-    ("a-wh1", "whoosh-short", S["s2"] - .2, .6, .57), ("a-pop2", "pop", S["s2"] + .12, .8, .7),
+    ("a-wh1", "whoosh-short", S["s2"] - .2, .6, .57), ("a-pop2", "pop", S["s2"] + .2, .8, .7),
     ("a-tap2", "click", S["s2"] + .8, .9, .37), ("a-tap2b", "click-soft", S["s2"] + 1.38, 1, .37),
-    ("a-wh2", "whoosh", S["s3"] - .22, .55, .57), ("a-pop3", "pop", S["s3"] + .12, .8, .7),
+    ("a-wh2", "whoosh", S["s3"] - .22, .55, .57), ("a-pop3", "pop", S["s3"] + .2, .8, .7),
     ("a-type", "typing", S["s3"] + .55, .5, .85), ("a-tap3", "click-soft", S["s3"] + .55 + 20 * .042 + .12, 1, .37),
-    ("a-wh3", "whoosh-short", S["s4"] - .2, .6, .57), ("a-pop4", "pop", S["s4"] + .12, .8, .7),
+    ("a-wh3", "whoosh-short", S["s4"] - .2, .6, .57), ("a-pop4", "pop", S["s4"] + .2, .8, .7),
     ("a-tap4", "click", S["s4"] + .75, .9, .37), ("a-tap4b", "click-soft", S["s4"] + 1.5, 1, .37),
     ("a-wh4", "whoosh", S["s5"] - .24, .55, .57), ("a-hit", "impact-bass-1", S["s5"] + .1, .7, 2.1),
-    ("a-tap5", "click", S["s5"] + 1.4, .9, .37), 
+    ("a-tap5", "click", S["s5"] + 1.4, .9, .37), ("a-tap5b", "click-soft", S["s5"] + 2.15, 1, .37), ("a-wh5", "whoosh-short", S["s5"] + 2.4, .5, .57),
 ]
 audio = "\n".join(
     f'      <audio id="{i}" class="clip" src="assets/sfx/{f}.mp3" data-start="{t:.2f}" data-duration="{d}" '

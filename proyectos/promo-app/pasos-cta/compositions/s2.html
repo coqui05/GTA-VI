@@ -4,11 +4,18 @@
 .step-tag { position:absolute; left:0; right:0; top:300px; text-align:center; font:700 34px 'Outfit';
   letter-spacing:.32em; color:#f3c56b; }
 .num-wrap { position:absolute; left:0; right:0; top:320px; height:480px; display:flex; justify-content:center; }
-.num-glow, .num-fill { position:absolute; font:400 470px/1 'Archivo Black'; letter-spacing:-.02em; }
-.num-glow { color:#ff5d8f; filter:blur(38px); opacity:.85; }
-.num-fill { background:linear-gradient(180deg,#ffffff 8%,#c9f7ff 42%,#7fd8ff 58%,#ff7aa5 100%);
+.num-in { position:absolute; left:0; right:0; top:0; bottom:0; display:flex; justify-content:center; }
+.num-glow, .num-fill, .num-echo, .num-shine { position:absolute; font:italic 900 470px/1 'Montserrat'; letter-spacing:-.04em; padding:0 40px; }
+.num-glow { color:#ff5d8f; filter:blur(40px); opacity:.85; }
+.num-fill { background:linear-gradient(175deg,#ffffff 0%,#f4fbff 38%,#9fe4ff 50%,#5fb8ff 62%,#ff6fa0 100%);
   -webkit-background-clip:text; background-clip:text; color:transparent;
-  -webkit-text-stroke:3px rgba(255,255,255,.55); }
+  -webkit-text-stroke:4px rgba(255,255,255,.9); filter:drop-shadow(10px 12px 0 #ff2d6f); }
+.num-echo { color:transparent; -webkit-text-stroke:5px #7fe3ff; opacity:0; }
+.num-echo.e2 { -webkit-text-stroke-color:#ff5d8f; }
+.num-shine { color:transparent; background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.95) 50%,transparent 60%);
+  background-size:300% 100%; background-position:120% 0; -webkit-background-clip:text; background-clip:text; }
+.num-ring { position:absolute; left:50%; top:50%; width:440px; height:440px; margin:-220px 0 0 -220px; border-radius:50%;
+  border:10px solid #f3c56b; opacity:0; box-shadow:0 0 40px rgba(243,197,107,.8); }
 .label { position:absolute; left:0; right:0; top:800px; text-align:center; font:400 86px/1 'Archivo Black';
   letter-spacing:.01em; text-shadow:0 8px 30px rgba(20,11,38,.6); }
 .label span { display:inline-block; margin:0 12px; }
@@ -25,7 +32,7 @@
   <div id="root" data-composition-id="s2" data-width="1080" data-height="1920" data-layout-allow-overlap>
     <div id="s2-stage" style="position:absolute;inset:0;transform-origin:540px 800px;">
   <div id="s2-tag" class="step-tag" data-layout-allow-occlusion>STEP 02</div>
-  <div id="s2-num" class="num-wrap" data-layout-allow-occlusion><div class="num-glow" data-layout-allow-occlusion>2</div><div class="num-fill">2</div></div>
+  <div id="s2-num" class="num-wrap" data-layout-allow-occlusion><div class="num-ring"></div><div class="num-in" data-layout-allow-occlusion><div class="num-echo e1" data-layout-allow-occlusion>2</div><div class="num-echo e2" data-layout-allow-occlusion>2</div><div class="num-glow" data-layout-allow-occlusion>2</div><div class="num-fill" data-layout-allow-occlusion>2</div><div class="num-shine" data-layout-allow-occlusion>2</div></div></div>
   <div id="s2-label" class="label"><span id="s2-w0" class="acc">SUBSCRIBE</span></div>
   <div id="s2-btn" style="position:absolute;left:150px;top:1000px;width:620px;height:150px;border-radius:75px;
        background:linear-gradient(135deg,#ff2d55,#ff5d8f);box-shadow:0 26px 70px rgba(255,45,85,.5);overflow:hidden;">
@@ -43,8 +50,12 @@
   </div>
   <script>
     const tl = gsap.timeline({ paused: true });
-    tl.fromTo("#s2-num",{scale:.3,rotation:-10,opacity:0,filter:"blur(18px)"},{scale:1,rotation:0,opacity:1,filter:"blur(0px)",duration:.55,ease:"back.out(1.9)"},0);
-    tl.fromTo("#s2-num .num-glow",{opacity:1.4,scale:1.25},{opacity:.85,scale:1,duration:.6,ease:"power3.out"},0);
+    tl.fromTo("#s2-num .num-in",{scale:.15,rotationY:-110,rotation:-14,opacity:0,transformPerspective:900,filter:"blur(20px)"},{scale:1,rotationY:0,rotation:0,opacity:1,filter:"blur(0px)",duration:.62,ease:"back.out(1.9)"},0);
+    tl.fromTo("#s2-num .num-glow",{opacity:1,scale:1.35},{opacity:.85,scale:1,duration:.7,ease:"power3.out"},0.2);
+    tl.fromTo("#s2-num .e1",{opacity:.95,scale:1},{opacity:0,scale:1.45,duration:.5,ease:"power2.out"},0.25);
+    tl.fromTo("#s2-num .e2",{opacity:.85,scale:1},{opacity:0,scale:1.8,duration:.6,ease:"power2.out"},0.32);
+    tl.fromTo("#s2-num .num-ring",{opacity:1,scale:.3},{opacity:0,scale:1.9,duration:.65,ease:"expo.out"},0.20);
+    tl.fromTo("#s2-num .num-shine",{backgroundPosition:"120% 0"},{backgroundPosition:"-20% 0",duration:.6,ease:"power2.inOut"},0.55);
     tl.fromTo("#s2-tag",{opacity:0,y:-24},{opacity:1,y:0,duration:.45,ease:"expo.out"},.05);
     tl.fromTo("#s2-w0",{opacity:0,filter:"blur(8px)",y:18},{opacity:1,filter:"blur(0px)",y:0,duration:.22,ease:"power3.out"},0.14);
     tl.fromTo("#s2-btn",{x:-160,opacity:0,filter:"blur(12px)"},{x:0,opacity:1,filter:"blur(0px)",duration:.5,ease:"expo.out"},.25);
