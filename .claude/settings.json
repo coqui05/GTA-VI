@@ -1,0 +1,11 @@
+{
+  "extraKnownMarketplaces": {
+    "hyperframes": { "source": { "source": "github", "repo": "heygen-com/hyperframes" } },
+    "claude-watch": { "source": { "source": "github", "repo": "taoufik123-collab/claude-watch" } }
+  },
+  "enabledPlugins": { "hyperframes@hyperframes": true, "watch@claude-watch": true },
+  "hooks": {
+    "SessionStart": [ { "matcher": "", "hooks": [ { "type": "command",
+      "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/preparar-sesion.sh\"", "timeout": 180 } ] } ]
+  }
+}
