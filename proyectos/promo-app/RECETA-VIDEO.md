@@ -172,6 +172,33 @@ Dura 14 s y la genera `generar.py`. Ya está aprobada por Coqui (v3):
 - Arriba siempre: "Giveaway rules at the link · Not affiliated with Rockstar Games" y la barra de 5 segmentos.
 - Títulos, "STEP 0X" y la nota de arriba llevan sombra para que se lean sobre el fondo claro.
 
+## Otros juegos (ejemplo: vasos y bola, `2026-11-12-vasos`)
+
+- **Si la grabación ya trae el sonido del juego** (se oye en el audio original), úsalo en vez de generar uno:
+  ```bash
+  ffmpeg -y -ss INICIO -i VIDEO.MOV -map 0:a:0 -af "highpass=f=100,afftdn=nf=-30,acompressor=threshold=-32dB:ratio=4:attack=5:release=120:makeup=8,loudnorm=I=-16:TP=-2:LRA=9" -ar 48000 -ac 2 assets/sfx/juego-audio.wav
+  ```
+  y en `intro.json` pon `["i-juego", "juego-audio.wav", 0.0, 1.0, DURACION]`.
+- Se puede recortar **solo el tiempo muerto del inicio**, antes de que empiece el juego (en los vasos: 2,2 s). Lo
+  que muestra el juego (revuelto, elección y resultado) no se corta.
+- El fondo de la plantilla sale del cuadro donde **se ve el premio claro** (`-ss` en ese segundo), no del último
+  cuadro si la mano lo tapa.
+- `intro.html` admite varias etapas de texto (ver `2026-11-12-vasos/compositions/intro.html`): gancho → durante el
+  juego → al elegir → al acertar → en el premio (con golpe de cámara y destello).
+
+## Textos: nunca repetir
+
+Coqui pidió **no repetir nunca** los textos de un video a otro, ni en el video ni en los títulos. Antes de escribir,
+revisa esta lista y agrega los tuyos al terminar.
+
+| Video | Textos en pantalla | Comentario del paso 3 (`"comment"` en `intro.json`) | Título |
+|---|---|---|---|
+| Ruleta 1 | CAN I LAND GTA VI? / IT LANDED ON GTA VI! | This channel is fire | I Spun the Wheel… and It Landed on GTA VI 😱🎰 |
+| Ruleta 2 | (mismos que ruleta 1, hecho antes de esta regla) | This channel is fire | Spun It Again… GTA VI AGAIN?! 😱🎰 |
+| Vasos | KEEP YOUR EYE ON THE BALL / DON'T BLINK... / WHICH CUP HAS IT? / FOUND IT! / PERFECT PICK! | Need more of these! | (ver chat) |
+
+Los títulos de la plantilla de 5 pasos (LIKE THE VIDEO, SUBSCRIBE, etc.) son fijos: son la plantilla.
+
 ## Reglas que no se rompen
 
 - **No se ponen cifras falsas** de suscriptores ni de videos en la captura del canal (Coqui pidió 8765; se le dijo que

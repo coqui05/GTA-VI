@@ -1,0 +1,21 @@
+{
+ "duration": 15.7,
+ "endbg": "assets/footage/fondo-final.jpg",
+ "sfx": [
+  [
+   "i-juego",
+   "juego-audio.wav",
+   0.0,
+   1.0,
+   15.7
+  ],
+  [
+   "i-wh",
+   "whoosh",
+   15.4,
+   0.6,
+   0.57
+  ]
+ ],
+ "comment": "Need more of these!"
+}

@@ -202,7 +202,7 @@ scenes.append((sid, dur, scene(sid, dur, body, js)))
 
 # ---------- 3. COMMENT ----------
 sid, dur = "s3", 3.0
-text = "This channel is fire"
+text = (INTRO or {}).get("comment", "This channel is fire")  # cambia en cada video
 chars = "".join(f'<span id="{sid}-c{i}">{"&nbsp;" if ch==" " else ch}</span>' for i, ch in enumerate(text))
 body = head(sid, 3, [("DROP A", False), ("COMMENT", True)]) + f"""
   <div id="{sid}-card" class="glass" style="left:110px;top:950px;width:860px;height:360px;border-radius:40px;overflow:hidden;">
@@ -357,7 +357,7 @@ sfx = [  # (id, archivo, tiempo, volumen, duración)
     ("a-wh1", "whoosh-short", S["s2"] - .2, .6, .57), ("a-pop2", "pop", S["s2"] + .2, .8, .7),
     ("a-tap2", "click", S["s2"] + .8, .9, .37), ("a-tap2b", "click-soft", S["s2"] + 1.38, 1, .37),
     ("a-wh2", "whoosh", S["s3"] - .22, .55, .57), ("a-pop3", "pop", S["s3"] + .2, .8, .7),
-    ("a-type", "typing", S["s3"] + .55, .5, .85), ("a-tap3", "click-soft", S["s3"] + .55 + 20 * .042 + .12, 1, .37),
+    ("a-type", "typing", S["s3"] + .55, .5, .85), ("a-tap3", "click-soft", S["s3"] + .55 + len(text) * .042 + .12, 1, .37),
     ("a-wh3", "whoosh-short", S["s4"] - .2, .6, .57), ("a-pop4", "pop", S["s4"] + .2, .8, .7),
     ("a-tap4", "click", S["s4"] + .75, .9, .37), ("a-tap4b", "click-soft", S["s4"] + 1.5, 1, .37),
     ("a-wh4", "whoosh", S["s5"] - .24, .55, .57), ("a-hit", "impact-bass-1", S["s5"] + .1, .7, 2.1),
