@@ -78,3 +78,10 @@ Cuando Coqui mande un video para hacer «algo así para mi app»:
 - No uses logos de Apple, Google Play u otras marcas salvo las insignias oficiales de descarga, si Coqui las da.
 - Si aparece alguien identificable que no autorizó salir, pregunta antes de entregar y ofrece desenfocarlo.
 - El repositorio es público: nada de datos privados de la app o de sus usuarios.
+
+## Plantilla de cierre (obligatoria)
+- Todo video que Coqui mande se edita y **termina con la plantilla "5 pasos"** (like, subscribe, comment, share, canal + link):
+  proyecto `proyectos/promo-app/pasos-cta/` (se regenera con `generar.py`). Última versión aprobada: v3.
+- El fondo negro de la plantilla se reemplaza por el final del video de Coqui (oscurecido) o se pone a continuación.
+- Videos de la ruleta: el giro se muestra **completo y sin cortes** para que se vea que el resultado es real.
+- No se ponen cifras falsas de suscriptores ni videos en la captura del canal.
