@@ -2,6 +2,9 @@
 import os, sys, json
 
 OUT = sys.argv[1]
+# Opcional: JSON con el video de Coqui que va antes de la plantilla
+INTRO = json.load(open(sys.argv[2])) if len(sys.argv) > 2 else None
+OFF = INTRO["duration"] if INTRO else 0.0
 
 ICON = {
     "thumb": "M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z",
@@ -334,7 +337,7 @@ for sid, dur, html in scenes:
     open(f"{OUT}/compositions/{sid}.html", "w").write(html)
 
 # ---------- raíz ----------
-starts, t = [], 0.0
+starts, t = [], OFF
 for sid, dur, _ in scenes:
     starts.append((sid, round(t, 2), dur)); t += dur
 total = round(t, 2)
@@ -342,6 +345,11 @@ hosts = "\n".join(
     f'      <div id="{sid}" data-composition-id="{sid}" data-composition-src="compositions/{sid}.html" '
     f'data-start="{st}" data-duration="{d}" data-track-index="2" data-track-kind="graphics" '
     f'data-width="1080" data-height="1920"></div>' for sid, st, d in starts)
+if INTRO:
+    hosts = (f'      <img id="endbg" class="clip" src="{INTRO["endbg"]}" data-start="{OFF}" data-duration="{round(total-OFF,2)}" data-track-index="1" '
+             f'style="position:absolute;inset:0;width:1080px;height:1920px;object-fit:cover;" />\n'
+             f'      <div id="intro" data-composition-id="intro" data-composition-src="compositions/intro.html" data-start="0" '
+             f'data-duration="{OFF}" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920"></div>\n') + hosts
 S = {sid: st for sid, st, _ in starts}
 sfx = [  # (id, archivo, tiempo, volumen, duración)
     ("a-pop1", "pop", S["s1"] + .18, .8, .7), ("a-tap1", "click-soft", S["s1"] + 1.0, 1, .37),
@@ -355,6 +363,8 @@ sfx = [  # (id, archivo, tiempo, volumen, duración)
     ("a-wh4", "whoosh", S["s5"] - .24, .55, .57), ("a-hit", "impact-bass-1", S["s5"] + .1, .7, 2.1),
     ("a-tap5", "click", S["s5"] + 1.4, .9, .37), ("a-tap5b", "click-soft", S["s5"] + 2.15, 1, .37), ("a-wh5", "whoosh-short", S["s5"] + 2.4, .5, .57),
 ]
+if INTRO:
+    sfx = [tuple(x) for x in INTRO["sfx"]] + sfx
 audio = "\n".join(
     f'      <audio id="{i}" class="clip" src="assets/sfx/{f}.mp3" data-start="{t:.2f}" data-duration="{d}" '
     f'data-track-index="{10+n%3}" data-volume="{v}"></audio>' for n, (i, f, t, v, d) in enumerate(sfx))
@@ -393,7 +403,7 @@ index = f"""<!doctype html>
           box-shadow:0 0 30px 10px rgba(255,93,143,.8); }}
       #vignette {{ position:absolute; inset:0; background:radial-gradient(90% 70% at 50% 45%,transparent 55%,rgba(8,3,20,.7)); }}
       .star {{ position:absolute; }}
-      #bar {{ position:absolute; left:0; right:0; top:240px; display:flex; justify-content:center; gap:14px; }}
+      #bar {{ position:absolute; z-index:5; left:0; right:0; top:240px; display:flex; justify-content:center; gap:14px; }}
       .seg {{ width:150px; height:10px; border-radius:5px; background:rgba(255,255,255,.18); overflow:hidden; }}
       .seg-fill {{ width:100%; height:100%; transform-origin:0 50%; background:linear-gradient(90deg,var(--pink),var(--gold)); }}
       #note {{ position:absolute; left:0; right:0; top:180px; text-align:center; font:500 28px 'Outfit';
@@ -402,7 +412,7 @@ index = f"""<!doctype html>
   </head>
   <body>
     <div id="root" data-composition-id="main" data-start="0" data-duration="{total}" data-width="1080" data-height="1920">
-      <div id="note">Giveaway rules at the link · Not affiliated with Rockstar Games</div>
+      <div id="note" style="z-index:5">Giveaway rules at the link · Not affiliated with Rockstar Games</div>
       <div id="bar">{seg}</div>
 {hosts}
 {audio}
@@ -410,6 +420,7 @@ index = f"""<!doctype html>
     <script>
       const tl = gsap.timeline({{ paused: true }});
       {seg_js}
+      {('tl.fromTo("#note, #bar",{opacity:0},{opacity:1,duration:.3,ease:"power2.out"},' + str(OFF) + ');') if INTRO else ''}
       window.__timelines["main"] = tl;
     </script>
   </body>

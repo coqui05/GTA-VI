@@ -1,0 +1,55 @@
+<template>
+  <style>
+    #root { position:absolute; inset:0; overflow:hidden; background:#000; font-family:'Outfit',sans-serif; color:#fff; }
+    #intro-cam { position:absolute; inset:0; transform-origin:540px 820px; }
+    #intro-video { position:absolute; inset:0; width:1080px; height:1920px; object-fit:cover; }
+    #intro-shade { position:absolute; left:0; right:0; top:0; height:560px;
+      background:linear-gradient(180deg,rgba(10,4,24,.9) 0%,rgba(10,4,24,.75) 45%,rgba(10,4,24,0)); }
+    .hook { position:absolute; left:40px; right:40px; top:190px; text-align:center; font:400 80px/1.02 'Archivo Black';
+      text-shadow:0 6px 24px rgba(0,0,0,.7); }
+    .hook span { display:inline-block; margin:0 10px; }
+    .acc { background:linear-gradient(90deg,#ff5d8f,#f3c56b); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    #intro-band { position:absolute; left:30px; right:30px; top:1108px; height:170px; border-radius:34px;
+      background:linear-gradient(160deg,rgba(54,24,92,.97),rgba(20,11,38,.97)); border:3px solid rgba(255,93,143,.85);
+      box-shadow:0 20px 60px rgba(0,0,0,.6); }
+    .band-t { position:absolute; left:0; right:0; top:30px; text-align:center; font:400 46px/1 'Archivo Black'; letter-spacing:.02em; }
+    #intro-disc { position:absolute; left:0; right:0; top:100px; text-align:center; font:500 28px 'Outfit'; color:rgba(255,255,255,.8); }
+    #intro-flash { position:absolute; inset:0; background:#fff; opacity:0; }
+    #intro-dark { position:absolute; inset:0; background:#000; opacity:0; }
+  </style>
+  <div id="root" data-composition-id="intro" data-width="1080" data-height="1920" data-layout-allow-overlap>
+    <div id="intro-cam">
+      <video id="intro-video" class="clip" src="assets/footage/ruleta.mp4" data-start="0" data-duration="8.8" muted playsinline></video>
+    </div>
+    <div id="intro-shade"></div>
+    <div id="intro-hook1" class="hook"><span>CAN I LAND</span><span class="acc">GTA VI?</span></div>
+    <div id="intro-hook2" class="hook"><span id="intro-h2a">IT LANDED ON</span><span id="intro-h2b" class="acc">GTA VI!</span></div>
+    <div id="intro-band">
+      <div id="intro-b1" class="band-t">WATCH WHERE IT STOPS</div>
+      <div id="intro-b2" class="band-t">ONE TAKE · <span class="acc">NO CUTS</span></div>
+      <div id="intro-disc">Giveaway rules at the link · Not affiliated with Rockstar Games</div>
+    </div>
+    <div id="intro-flash"></div>
+    <div id="intro-dark"></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // gancho visible desde el cuadro 0
+    tl.fromTo("#intro-hook1", { scale: 1.08 }, { scale: 1, duration: .5, ease: "expo.out" }, 0);
+    tl.fromTo("#intro-band", { y: 0 }, { y: 0, duration: .1 }, 0);
+    tl.set("#intro-hook2, #intro-b2", { opacity: 0 }, 0);
+    // resultado: golpe de cámara, destello y textos nuevos
+    tl.to("#intro-cam", { scale: 1.12, duration: .45, ease: "power3.out" }, 6.3);
+    tl.fromTo("#intro-flash", { opacity: .75 }, { opacity: 0, duration: .45, ease: "power2.out", immediateRender: false }, 6.32);
+    tl.to("#intro-hook1", { opacity: 0, filter: "blur(10px)", duration: .15, ease: "power3.in" }, 6.3);
+    tl.fromTo("#intro-h2a", { opacity: 0, filter: "blur(8px)", y: 20 }, { opacity: 1, filter: "blur(0px)", y: 0, duration: .22, ease: "power3.out" }, 6.38);
+    tl.fromTo("#intro-h2b", { opacity: 0, scale: .3, rotation: -8 }, { opacity: 1, scale: 1, rotation: 0, duration: .5, ease: "back.out(2.2)" }, 6.46);
+    tl.set("#intro-hook2", { opacity: 1 }, 6.38);
+    tl.to("#intro-b1", { opacity: 0, y: -30, duration: .15, ease: "power3.in" }, 6.4);
+    tl.fromTo("#intro-b2", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: .3, ease: "expo.out" }, 6.5);
+    // salida hacia la plantilla
+    tl.to("#intro-cam", { scale: 1.3, duration: .35, ease: "power3.in" }, 8.45);
+    tl.to("#intro-dark", { opacity: .85, duration: .35, ease: "power2.in" }, 8.45);
+    window.__timelines["intro"] = tl;
+  </script>
+</template>

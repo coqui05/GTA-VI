@@ -1,0 +1,96 @@
+<template>
+  <style>
+#root { position:absolute; inset:0; font-family:'Outfit',sans-serif; color:#fff; }
+.step-tag { position:absolute; left:0; right:0; top:300px; text-align:center; font:700 34px 'Outfit';
+  letter-spacing:.32em; color:#f3c56b; }
+.num-wrap { position:absolute; left:0; right:0; top:320px; height:480px; display:flex; justify-content:center; }
+.num-in { position:absolute; left:0; right:0; top:0; bottom:0; display:flex; justify-content:center; }
+.num-glow, .num-fill, .num-echo, .num-shine { position:absolute; font:italic 900 470px/1 'Montserrat'; letter-spacing:-.04em; padding:0 40px; }
+.num-glow { color:#ff5d8f; filter:blur(40px); opacity:.85; }
+.num-fill { background:linear-gradient(175deg,#ffffff 0%,#f4fbff 38%,#9fe4ff 50%,#5fb8ff 62%,#ff6fa0 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  -webkit-text-stroke:4px rgba(255,255,255,.9); filter:drop-shadow(10px 12px 0 #ff2d6f); }
+.num-echo { color:transparent; -webkit-text-stroke:5px #7fe3ff; opacity:0; }
+.num-echo.e2 { -webkit-text-stroke-color:#ff5d8f; }
+.num-shine { color:transparent; background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.95) 50%,transparent 60%);
+  background-size:300% 100%; background-position:120% 0; -webkit-background-clip:text; background-clip:text; }
+.num-ring { position:absolute; left:50%; top:50%; width:440px; height:440px; margin:-220px 0 0 -220px; border-radius:50%;
+  border:10px solid #f3c56b; opacity:0; box-shadow:0 0 40px rgba(243,197,107,.8); }
+.label { position:absolute; left:0; right:0; top:800px; text-align:center; font:400 86px/1 'Archivo Black';
+  letter-spacing:.01em; text-shadow:0 8px 30px rgba(20,11,38,.6); }
+.label span { display:inline-block; margin:0 12px; }
+.label .acc { background:linear-gradient(90deg,#ff5d8f,#f3c56b); -webkit-background-clip:text;
+  background-clip:text; color:transparent; }
+.glass { position:absolute; background:linear-gradient(160deg,rgba(70,36,120,.72),rgba(20,11,38,.78));
+  border:2px solid rgba(255,255,255,.22); border-radius:44px;
+  box-shadow:0 30px 80px rgba(10,4,30,.55), inset 0 1px 0 rgba(255,255,255,.3); backdrop-filter:blur(18px); }
+.tap { position:absolute; left:0; top:0; width:76px; height:76px; margin:-38px 0 0 -38px; border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,.95) 0 38%,rgba(255,255,255,.35) 40% 100%);
+  box-shadow:0 10px 30px rgba(0,0,0,.45); z-index:20; }
+.spark { position:absolute; left:0; top:0; width:22px; height:22px; margin:-11px 0 0 -11px; }
+</style>
+  <div id="root" data-composition-id="s4" data-width="1080" data-height="1920" data-layout-allow-overlap>
+    <div id="s4-stage" style="position:absolute;inset:0;transform-origin:540px 800px;">
+  <div id="s4-tag" class="step-tag" data-layout-allow-occlusion>STEP 04</div>
+  <div id="s4-num" class="num-wrap" data-layout-allow-occlusion><div class="num-ring"></div><div class="num-in" data-layout-allow-occlusion><div class="num-echo e1" data-layout-allow-occlusion>4</div><div class="num-echo e2" data-layout-allow-occlusion>4</div><div class="num-glow" data-layout-allow-occlusion>4</div><div class="num-fill" data-layout-allow-occlusion>4</div><div class="num-shine" data-layout-allow-occlusion>4</div></div></div>
+  <div id="s4-label" class="label"><span id="s4-w0" class="acc">SHARE</span><span id="s4-w1" class="">IT</span></div>
+  <div id="s4-btn" class="glass" style="left:330px;top:960px;width:420px;height:140px;border-radius:70px;">
+    <svg viewBox="0 0 24 24" width="74" height="74" style="position:absolute;left:62px;top:33px;"><path d="M14 9V5l7 7-7 7v-4.1c-5 0-8.5 1.6-11 5.1 1-5 4-10 11-11z" fill="#7fe3ff"/></svg>
+    <div style="position:absolute;left:160px;top:36px;font:700 56px/66px 'Outfit';">Share</div>
+  </div>
+  <div id="s4-sheet" class="glass" style="left:120px;top:1130px;width:840px;height:190px;border-radius:40px;">
+    <div id="s4-it0" style="position:absolute;left:45px;top:22px;width:120px;text-align:center;">
+      <div id="s4-ic0" style="width:100px;height:100px;margin:0 auto;border-radius:50%;background:rgba(255,255,255,.14);border:2px solid rgba(255,255,255,.2);position:relative;">
+        <svg viewBox="0 0 24 24" width="52" height="52" style="position:absolute;left:22px;top:22px;"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="#fff"/></svg></div>
+      <div id="s4-lb0" style="margin-top:10px;font:600 28px 'Outfit';white-space:nowrap;margin-left:-20px;margin-right:-20px;">Copy link</div>
+    </div>
+    <div id="s4-it1" style="position:absolute;left:255px;top:22px;width:120px;text-align:center;">
+      <div id="s4-ic1" style="width:100px;height:100px;margin:0 auto;border-radius:50%;background:rgba(255,255,255,.14);border:2px solid rgba(255,255,255,.2);position:relative;">
+        <svg viewBox="0 0 24 24" width="52" height="52" style="position:absolute;left:22px;top:22px;"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z" fill="#fff"/></svg></div>
+      <div id="s4-lb1" style="margin-top:10px;font:600 28px 'Outfit';white-space:nowrap;margin-left:-20px;margin-right:-20px;">Message</div>
+    </div>
+    <div id="s4-it2" style="position:absolute;left:465px;top:22px;width:120px;text-align:center;">
+      <div id="s4-ic2" style="width:100px;height:100px;margin:0 auto;border-radius:50%;background:rgba(255,255,255,.14);border:2px solid rgba(255,255,255,.2);position:relative;">
+        <svg viewBox="0 0 24 24" width="52" height="52" style="position:absolute;left:22px;top:22px;"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" fill="#fff"/></svg></div>
+      <div id="s4-lb2" style="margin-top:10px;font:600 28px 'Outfit';white-space:nowrap;margin-left:-20px;margin-right:-20px;">Send</div>
+    </div>
+    <div id="s4-it3" style="position:absolute;left:675px;top:22px;width:120px;text-align:center;">
+      <div id="s4-ic3" style="width:100px;height:100px;margin:0 auto;border-radius:50%;background:rgba(255,255,255,.14);border:2px solid rgba(255,255,255,.2);position:relative;">
+        <svg viewBox="0 0 24 24" width="52" height="52" style="position:absolute;left:22px;top:22px;"><path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" fill="#fff"/></svg></div>
+      <div id="s4-lb3" style="margin-top:10px;font:600 28px 'Outfit';white-space:nowrap;margin-left:-20px;margin-right:-20px;">More</div>
+    </div>
+  </div>
+  <div id="s4-tap" class="tap"></div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#s4-num .num-in",{scale:.15,rotationY:-110,rotation:-14,opacity:0,transformPerspective:900,filter:"blur(20px)"},{scale:1,rotationY:0,rotation:0,opacity:1,filter:"blur(0px)",duration:.62,ease:"back.out(1.9)"},0);
+    tl.fromTo("#s4-num .num-glow",{opacity:1,scale:1.35},{opacity:.85,scale:1,duration:.7,ease:"power3.out"},0.2);
+    tl.fromTo("#s4-num .e1",{opacity:.95,scale:1},{opacity:0,scale:1.45,duration:.5,ease:"power2.out"},0.25);
+    tl.fromTo("#s4-num .e2",{opacity:.85,scale:1},{opacity:0,scale:1.8,duration:.6,ease:"power2.out"},0.32);
+    tl.fromTo("#s4-num .num-ring",{opacity:1,scale:.3},{opacity:0,scale:1.9,duration:.65,ease:"expo.out"},0.20);
+    tl.fromTo("#s4-num .num-shine",{backgroundPosition:"120% 0"},{backgroundPosition:"-20% 0",duration:.6,ease:"power2.inOut"},0.55);
+    tl.fromTo("#s4-tag",{opacity:0,y:-24},{opacity:1,y:0,duration:.45,ease:"expo.out"},.05);
+    tl.fromTo("#s4-w0",{opacity:0,filter:"blur(8px)",y:18},{opacity:1,filter:"blur(0px)",y:0,duration:.22,ease:"power3.out"},0.14);
+    tl.fromTo("#s4-w1",{opacity:0,filter:"blur(8px)",y:18},{opacity:1,filter:"blur(0px)",y:0,duration:.22,ease:"power3.out"},0.22);
+    tl.fromTo("#s4-btn",{scale:.6,opacity:0,filter:"blur(12px)"},{scale:1,opacity:1,filter:"blur(0px)",duration:.5,ease:"back.out(1.7)"},.22);
+    tl.set("#s4-sheet",{opacity:0},0);
+    tl.fromTo("#s4-tap",{x:760,y:1560,opacity:0,scale:1.3},{x:540,y:1030,opacity:1,scale:1,duration:0.30,ease:"power3.out"},0.45);
+    tl.to("#s4-tap",{scale:.72,duration:.08,ease:"power2.in"},0.75);
+    tl.to("#s4-tap",{scale:1,duration:.22,ease:"back.out(3)"},0.83);
+    tl.to("#s4-btn",{scale:.93,duration:.08},.75);
+    tl.to("#s4-btn",{scale:1,borderColor:"rgba(127,227,255,.85)",boxShadow:"0 26px 80px rgba(127,227,255,.4)",duration:.3,ease:"back.out(3)"},.83);
+    tl.fromTo("#s4-sheet",{y:140,opacity:0,filter:"blur(10px)"},{y:0,opacity:1,filter:"blur(0px)",duration:.45,ease:"expo.out"},.85);
+    tl.fromTo("#s4-sheet > div",{y:40,opacity:0},{y:0,opacity:1,duration:.35,ease:"power3.out",stagger:.06},.92);
+    tl.to("#s4-tap",{x:225,y:1202,duration:0.30,ease:"power2.inOut"},1.2);
+    tl.to("#s4-tap",{scale:.72,duration:.08,ease:"power2.in"},1.5);
+    tl.to("#s4-tap",{scale:1,duration:.22,ease:"back.out(3)"},1.58);
+    tl.to("#s4-ic0",{background:"linear-gradient(135deg,#ff5d8f,#f3c56b)",borderColor:"rgba(255,255,255,.6)",scale:1.12,duration:.2,ease:"back.out(3)"},1.52);
+    tl.to("#s4-ic0",{scale:1,duration:.2},1.72);
+    tl.to("#s4-lb0",{color:"#f3c56b",duration:.15},1.52);
+    tl.to("#s4-tap",{opacity:0,duration:.15},1.8);
+    tl.to("#s4-stage",{scale:1.6,opacity:0,filter:"blur(20px)",duration:.24,ease:"power3.in"},1.9600000000000002);
+    window.__timelines["s4"] = tl;
+  </script>
+</template>
