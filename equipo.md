@@ -10,6 +10,7 @@ Coqui → **Franklin** → **Coordinador** → especialistas
 | Editor de Video | `agentes/editor.md` | `agente/editor` | Grabaciones para editar, plantillas de video |
 | Herramientas y Diseño | `agentes/herramientas.md` | `agente/herramientas` | Ruletas, juegos nuevos, portadas y gráficos |
 | Página y Sorteos | `agentes/pagina-sorteos.md` | `agente/pagina-sorteos` | Artículos, reglas, formulario, participantes y ganadores |
+| Videos Promo de la App | `agentes/promo-app.md` | `agente/promo-app` | Videos de referencia y grabaciones de la app para promos |
 | Lanzamiento GTA 6 *(temporal, inactivo)* | `agentes/lanzamiento.md` | — | Contenido cuando salga el juego |
 
 **Flujo de un video:** idea → Coordinador reparte → Ganchos escribe → Herramientas prepara el juego → Coqui graba →
