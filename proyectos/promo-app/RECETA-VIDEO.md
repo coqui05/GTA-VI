@@ -81,6 +81,14 @@ El sonido sale del HTML original de la ruleta: un "tic" por casilla (onda cuadra
    # -> T0=0.650  E=64.42  R0=0.448
    ```
    Comprueba que los "tic modelo" coincidan con los cambios detectados de la zona lenta (±0,03 s).
+   - `T_RESULTADO` = primer cuadro donde aparece la pantalla de premio, menos 0,02 s. `T0` = `T_RESULTADO` − 5,6.
+   - Si la cámara se mueve mucho, prueba 2 o 3 puntos cerca de la flecha y quédate con los tics que se repiten
+     en todos, solo en la zona lenta (de 1 a 2,5 s antes del resultado). `E` tiene que quedar entre 38 y 63.
+   - Ejemplos aprobados:
+     | Video | Duración | T_RESULTADO | Tics usados | T0 | E | R0 | Fanfarria |
+     |---|---|---|---|---|---|---|---|
+     | IMG_3105 (`2026-11-12-ruleta`) | 8.8 | 6.25 | 4.167 / 4.633 | 0.65 | 64.5 | 0.45 | 6.27 |
+     | IMG_3108 (`2026-11-12-ruleta-2`) | 10.26 | 7.81 | 5.55 / 5.967 | 2.21 | 53.08 | 0.623 | 7.83 |
 4. Genera el audio. Argumentos: duración del video, T0, E, R0 y el segundo de la fanfarria (= `T_RESULTADO`):
    ```bash
    python3 -I herramientas/sonido_ruleta.py generar $NUEVO/assets/sfx/ruleta-giro.wav 8.8 0.65 64.5 0.45 6.27
@@ -162,7 +170,7 @@ Dura 14 s y la genera `generar.py`. Ya está aprobada por Coqui (v3):
 - Números: Montserrat 900 cursiva, relleno cromado y sombra rosa desplazada. Entran girando en 3D con rebote, un aro
   dorado, dos contornos (azul y rosa) y un brillo que los cruza.
 - Arriba siempre: "Giveaway rules at the link · Not affiliated with Rockstar Games" y la barra de 5 segmentos.
-- Títulos con sombra para que se lean sobre el fondo claro.
+- Títulos, "STEP 0X" y la nota de arriba llevan sombra para que se lean sobre el fondo claro.
 
 ## Reglas que no se rompen
 

@@ -25,7 +25,7 @@ def svg(name, size, fill="#fff", extra=""):
 COMMON_CSS = """
 #root { position:absolute; inset:0; font-family:'Outfit',sans-serif; color:#fff; }
 .step-tag { position:absolute; left:0; right:0; top:300px; text-align:center; font:700 34px 'Outfit';
-  letter-spacing:.32em; color:#f3c56b; }
+  letter-spacing:.32em; color:#f3c56b; text-shadow:0 2px 0 rgba(10,4,24,.9),0 0 18px rgba(10,4,24,.95); }
 .num-wrap { position:absolute; left:0; right:0; top:320px; height:480px; display:flex; justify-content:center; }
 .num-in { position:absolute; left:0; right:0; top:0; bottom:0; display:flex; justify-content:center; }
 .num-glow, .num-fill, .num-echo, .num-shine { position:absolute; font:italic 900 470px/1 'Montserrat'; letter-spacing:-.04em; padding:0 40px; }
@@ -407,7 +407,7 @@ index = f"""<!doctype html>
       .seg {{ width:150px; height:10px; border-radius:5px; background:rgba(255,255,255,.18); overflow:hidden; }}
       .seg-fill {{ width:100%; height:100%; transform-origin:0 50%; background:linear-gradient(90deg,var(--pink),var(--gold)); }}
       #note {{ position:absolute; left:0; right:0; top:180px; text-align:center; font:500 28px 'Outfit';
-          color:rgba(255,255,255,.72); }}
+          color:rgba(255,255,255,.9); text-shadow:0 2px 0 rgba(10,4,24,.9),0 0 16px rgba(10,4,24,.95); }}
     </style>
   </head>
   <body>
