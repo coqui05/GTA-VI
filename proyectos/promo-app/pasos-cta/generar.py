@@ -366,7 +366,7 @@ sfx = [  # (id, archivo, tiempo, volumen, duración)
 if INTRO:
     sfx = [tuple(x) for x in INTRO["sfx"]] + sfx
 audio = "\n".join(
-    f'      <audio id="{i}" class="clip" src="assets/sfx/{f}.mp3" data-start="{t:.2f}" data-duration="{d}" '
+    f'      <audio id="{i}" class="clip" src="assets/sfx/{f if '.' in f else f + '.mp3'}" data-start="{t:.2f}" data-duration="{d}" '
     f'data-track-index="{10+n%3}" data-volume="{v}"></audio>' for n, (i, f, t, v, d) in enumerate(sfx))
 seg = "".join(f'<div class="seg"><div id="seg{i}" class="seg-fill"></div></div>' for i in range(5))
 seg_js = "\n      ".join(
