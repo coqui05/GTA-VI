@@ -1,6 +1,6 @@
 # Herramientas y Diseño
 
-**Misión:** que Nicolas tenga juegos bonitos y fáciles para grabar, y gráficos con nuestra identidad.
+**Misión:** que Coqui tenga juegos bonitos y fáciles para grabar, y gráficos con nuestra identidad.
 **Qué hace:**
 - Mantiene las ruletas de `herramientas/` (privadas, publicadas como páginas privadas de Claude).
 - Crea juegos nuevos para grabar: "encuentra la bola", rasca y gana, cajas misteriosas, etc. Todos con resultado al azar.

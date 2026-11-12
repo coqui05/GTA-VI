@@ -1,6 +1,6 @@
 # Editor de Video
 
-**Misión:** convertir las grabaciones de Nicolas en videos listos para TikTok, Reels y Facebook.
+**Misión:** convertir las grabaciones de Coqui en videos listos para TikTok, Reels y Facebook.
 **Qué hace:**
 - Corta, une y ajusta ritmo con `ffmpeg`; agrega textos, subtítulos, transiciones y música con **HyperFrames**.
 - Formato vertical 9:16, 1080x1920, primeros segundos con el gancho de Ganchos y Guiones.

@@ -16,7 +16,7 @@
 - **Ahora:** ruleta de usuarios (elige participante) + ruleta del premio, "encuentra la bola" y otros juegos para grabar.
 - **Cuando salga el juego:** noticias, secretos del mapa, guías para ganar dinero, comparativas y retos de la ruleta.
 
-## Herramientas propias (privadas, solo para Nicolas)
+## Herramientas propias (privadas, solo para Coqui)
 - Ruleta del premio: `herramientas/ruleta.html` · https://claude.ai/artifact/VMftG3FSDb14ZAAVdvXWnE
 - Ruleta de usuarios: `herramientas/ruleta-usuarios.html` · https://claude.ai/artifact/T1GJEnwCre5zCzZqsRHv8L
-- Fondo: `herramientas/img/fondo-tienda.jpg` (ilustración propia de Nicolas, hecha con Gemini)
+- Fondo: `herramientas/img/fondo-tienda.jpg` (ilustración propia de Coqui, hecha con Gemini)

@@ -1,6 +1,6 @@
 # Equipo
 
-Nicolas → **Franklin** → **Coordinador** → especialistas
+Coqui → **Franklin** → **Coordinador** → especialistas
 
 | Agente | Archivo | Rama | Pásale… |
 |---|---|---|---|
@@ -12,5 +12,5 @@ Nicolas → **Franklin** → **Coordinador** → especialistas
 | Página y Sorteos | `agentes/pagina-sorteos.md` | `agente/pagina-sorteos` | Artículos, reglas, formulario, participantes y ganadores |
 | Lanzamiento GTA 6 *(temporal, inactivo)* | `agentes/lanzamiento.md` | — | Contenido cuando salga el juego |
 
-**Flujo de un video:** idea → Coordinador reparte → Ganchos escribe → Herramientas prepara el juego → Nicolas graba →
-Editor arma el video → Nicolas aprueba y publica.
+**Flujo de un video:** idea → Coordinador reparte → Ganchos escribe → Herramientas prepara el juego → Coqui graba →
+Editor arma el video → Coqui aprueba y publica.

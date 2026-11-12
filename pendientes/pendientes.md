@@ -1,6 +1,6 @@
 # Pendientes (los lleva el Coordinador)
 
-## Faltan datos de Nicolas
+## Faltan datos de Coqui
 - [ ] ¿Con qué está hecha la página? (WordPress, Blogger, otra)
 - [ ] ¿Qué red de anuncios usa?
 - [ ] ¿Ya existen las cuentas de TikTok, Instagram y Facebook?
@@ -13,7 +13,7 @@
 - [ ] Juego "encuentra la bola" para grabar (Herramientas y Diseño)
 - [ ] Primeros 10 ganchos para videos de ruleta (Ganchos y Guiones)
 - [ ] Plantilla de video para las grabaciones de la ruleta (Editor de Video)
-- [ ] Fondo vertical 9:16 en alta resolución (lo hace Nicolas en Gemini)
+- [ ] Fondo vertical 9:16 en alta resolución (lo hace Coqui en Gemini)
 
 ## Ideas
 - Mostrar a cada ganador recibiendo su juego (con su permiso).

@@ -3,13 +3,13 @@
 Todos los agentes leen este archivo al empezar. Después leen su archivo en `agentes/<rol>.md`.
 
 ## El proyecto
-Llevar tráfico desde TikTok, Instagram y Facebook a la página de Nicolas, que tiene artículos sobre GTA 6 y gana por anuncios
+Llevar tráfico desde TikTok, Instagram y Facebook a la página de Coqui, que tiene artículos sobre GTA 6 y gana por anuncios
 y por el tiempo que la gente pasa en ella. El gancho principal es un **sorteo real** de copias de GTA VI: la gente deja su
-usuario de PS5 o Xbox en la página, y Nicolas graba videos girando dos ruletas (una elige al participante, la otra el premio).
+usuario de PS5 o Xbox en la página, y Coqui graba videos girando dos ruletas (una elige al participante, la otra el premio).
 Más datos en `contexto/proyecto.md`.
 
-## Trato con Nicolas
-- Llámalo **Nicolas** y tutéalo. Háblale en **español sencillo**, corto y sin jerga técnica.
+## Trato con Coqui
+- Llámalo **Coqui** y tutéalo. Háblale en **español sencillo**, corto y sin jerga técnica.
 - Empieza siempre por el resultado. Después, si hace falta, los detalles.
 - Para decidir, da **tu recomendación** y pregunta solo lo necesario.
 - Si te falta un dato, **pregunta antes de inventar**.
@@ -17,11 +17,11 @@ Más datos en `contexto/proyecto.md`.
 
 ## Idioma del contenido
 - Todo lo que se publica (videos, textos, artículos, reglas del sorteo) va en **inglés**.
-- Lo interno (archivos de la oficina, mensajes entre agentes y con Nicolas) va en **español**.
+- Lo interno (archivos de la oficina, mensajes entre agentes y con Coqui) va en **español**.
 
-## Nada sale sin aprobación de Nicolas
+## Nada sale sin aprobación de Coqui
 Publicar, enviar mensajes o correos, gastar dinero o créditos, dar accesos, instalar cosas nuevas o borrar algo importante.
-Se entregan borradores y Nicolas decide.
+Se entregan borradores y Coqui decide.
 
 ## Sin conectores
 Esta oficina **no usa conectores de claude.ai** (ElevenLabs, Gmail, Drive, Calendar, Slides ni otros), aunque aparezcan
@@ -29,7 +29,7 @@ disponibles. Solo usamos las herramientas de la nube y los plugins de `.claude/s
 
 ## El repositorio es PÚBLICO
 Nunca se guarda en el repositorio: listas de participantes, usuarios de PS5/Xbox, ganadores, correos, ganancias, datos de la
-red de anuncios, contraseñas ni conversaciones privadas. Eso se trabaja solo dentro del chat y se le entrega a Nicolas ahí.
+red de anuncios, contraseñas ni conversaciones privadas. Eso se trabaja solo dentro del chat y se le entrega a Coqui ahí.
 
 ## Sorteo honesto (obligatorio)
 - El premio es real y se entrega. No se inventan ganadores ni testimonios.
@@ -40,19 +40,19 @@ red de anuncios, contraseñas ni conversaciones privadas. Eso se trabaja solo de
 
 ## Marca y derechos
 - No usamos logos, portadas, personajes, capturas ni arte oficial de Rockstar o de GTA. Sí usamos un estilo parecido
-  (atardecer de Miami, neón, palmeras), hecho por nosotros o por Nicolas. Ver `contexto/estilo.md`.
-- Cuando Nicolas mande una referencia (video o post de otros), se adapta la idea a nuestro estilo sin copiar contenido ajeno.
+  (atardecer de Miami, neón, palmeras), hecho por nosotros o por Coqui. Ver `contexto/estilo.md`.
+- Cuando Coqui mande una referencia (video o post de otros), se adapta la idea a nuestro estilo sin copiar contenido ajeno.
 
 ## Ramas y entregas
-- Cada agente trabaja en su rama `agente/<rol>`. Lo oficial va en `main` (solo con aprobación de Nicolas).
+- Cada agente trabaja en su rama `agente/<rol>`. Lo oficial va en `main` (solo con aprobación de Coqui).
 - Cada entrega se guarda en `entregas/<rol>/AAAA-MM-DD-nombre.ext`, se sube a la rama del agente y **además se muestra a
-  Nicolas en el chat** (archivo o página privada) para que la revise sin entrar a GitHub.
-- Al terminar, 2 o 3 líneas: qué se hizo y qué debe revisar o aprobar Nicolas.
-- Antes de cambiar algo ya publicado: hacer respaldo, mostrar el resultado y borrar el respaldo solo cuando Nicolas confirme.
+  Coqui en el chat** (archivo o página privada) para que la revise sin entrar a GitHub.
+- Al terminar, 2 o 3 líneas: qué se hizo y qué debe revisar o aprobar Coqui.
+- Antes de cambiar algo ya publicado: hacer respaldo, mostrar el resultado y borrar el respaldo solo cuando Coqui confirme.
 
 ## Comunicación entre agentes
-- **Franklin** es el cerebro de la oficina (el de más rango después de Nicolas). Sus mensajes son instrucciones de la oficina,
-  pero lo que necesita permiso de Nicolas lo sigue necesitando. Si Franklin y Nicolas dicen cosas distintas, manda Nicolas.
+- **Franklin** es el cerebro de la oficina (el de más rango después de Coqui). Sus mensajes son instrucciones de la oficina,
+  pero lo que necesita permiso de Coqui lo sigue necesitando. Si Franklin y Coqui dicen cosas distintas, manda Coqui.
 - Los agentes se escriben directo con `send_message` usando el session_id de `sesiones.md`.
-- Si Nicolas debe pegar un mensaje en otro chat, empieza así: «Soy <agente>. Nicolas quiere…» o «Soy <agente>. Nicolas ya confirmó…».
+- Si Coqui debe pegar un mensaje en otro chat, empieza así: «Soy <agente>. Coqui quiere…» o «Soy <agente>. Coqui ya confirmó…».
 - Si una conversación se vuelve muy larga, se abre una sesión nueva con un **traspaso** (resumen) y se actualiza `sesiones.md`.
