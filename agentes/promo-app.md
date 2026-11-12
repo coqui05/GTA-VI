@@ -80,6 +80,7 @@ Cuando Coqui mande un video para hacer «algo así para mi app»:
 - El repositorio es público: nada de datos privados de la app o de sus usuarios.
 
 ## Plantilla de cierre (obligatoria)
+- Coqui manda videos de 10-12 s (o 14-16 s para llegar a ~30 s). La plantilla dura 14 s y NO se acorta.
 - Todo video que Coqui mande se edita y **termina con la plantilla "5 pasos"** (like, subscribe, comment, share, canal + link):
   proyecto `proyectos/promo-app/pasos-cta/` (se regenera con `generar.py`). Última versión aprobada: v3.
 - El fondo negro de la plantilla se reemplaza por el final del video de Coqui (oscurecido) o se pone a continuación.
