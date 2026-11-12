@@ -257,34 +257,44 @@ js = head_js(sid, 2) + f"""
     {exit_js(sid, "zoom", dur-.24)}"""
 scenes.append((sid, dur, scene(sid, dur, body, js)))
 
-# ---------- 5. CHANNEL ----------
-sid, dur = "s5", 3.4
+# ---------- 5. CANAL (captura tipo YouTube, modo oscuro) ----------
+sid, dur = "s5", 3.6
+YT_CSS = """
+#s5-tag { top:300px; }
+#s5-num { top:330px; height:230px; }
+#s5-num .num-glow, #s5-num .num-fill { font-size:220px; }
+#s5-label { top:568px; font-size:62px; }
+.yt { position:absolute; left:60px; top:650px; width:960px; height:680px; background:#0f0f0f; border-radius:40px;
+  overflow:hidden; font-family:'Roboto',sans-serif; color:#f1f1f1; box-shadow:0 40px 120px rgba(0,0,0,.7);
+  border:1px solid rgba(255,255,255,.08); }
+"""
 body = head(sid, 5, [("VISIT THE", False), ("CHANNEL", True)]) + f"""
-  <div id="{sid}-card" class="glass" style="left:120px;top:950px;width:840px;height:380px;border-radius:48px;">
-    <div id="{sid}-ring" style="position:absolute;left:325px;top:-60px;width:190px;height:190px;border-radius:50%;
-         background:conic-gradient(#ff5d8f,#f3c56b,#7fe3ff,#2fb3b0,#ff5d8f);"></div>
-    <div style="position:absolute;left:333px;top:-52px;width:174px;height:174px;border-radius:50%;background:#140b26;"></div>
-    <img id="{sid}-av" src="assets/avatar.jpg" style="position:absolute;left:339px;top:-46px;width:162px;height:162px;border-radius:50%;object-fit:cover;" />
-    <div id="{sid}-name" style="position:absolute;left:0;right:0;top:150px;text-align:center;font:400 58px/1 'Archivo Black';">The Diamond Royale</div>
-    <div id="{sid}-handle" style="position:absolute;left:0;right:0;top:224px;text-align:center;font:500 36px 'Outfit';color:rgba(255,255,255,.7);">@thediamondroyale</div>
-    <div id="{sid}-btn" style="position:absolute;left:200px;top:278px;width:440px;height:88px;border-radius:44px;
-         background:linear-gradient(135deg,#ff5d8f,#f3c56b);box-shadow:0 20px 60px rgba(255,93,143,.5);
-         text-align:center;font:400 38px/88px 'Archivo Black';letter-spacing:.04em;color:#140b26;">VISIT CHANNEL</div>
+  <div id="{sid}-card" class="yt">
+    <svg viewBox="0 0 24 24" width="48" height="48" style="position:absolute;left:30px;top:26px;"><path d="M15.4 4.6L14 3.2 5.2 12l8.8 8.8 1.4-1.4L8 12z" fill="#f1f1f1"/></svg>
+    <svg viewBox="0 0 24 24" width="46" height="46" style="position:absolute;left:800px;top:27px;"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="#f1f1f1" stroke-width="2"/><path d="M15.5 15.5L21 21" stroke="#f1f1f1" stroke-width="2.2" stroke-linecap="round"/></svg>
+    <svg viewBox="0 0 24 24" width="46" height="46" style="position:absolute;left:880px;top:27px;"><circle cx="12" cy="5" r="2" fill="#f1f1f1"/><circle cx="12" cy="12" r="2" fill="#f1f1f1"/><circle cx="12" cy="19" r="2" fill="#f1f1f1"/></svg>
+    <img id="{sid}-banner" src="assets/banner.jpg" style="position:absolute;left:35px;top:100px;width:890px;height:245px;border-radius:20px;object-fit:cover;" />
+    <img id="{sid}-av" src="assets/avatar-yt.jpg" style="position:absolute;left:35px;top:378px;width:160px;height:160px;border-radius:50%;object-fit:cover;" />
+    <div style="position:absolute;left:228px;top:392px;font:700 48px/1.1 'Roboto';letter-spacing:-.01em;">The Diamond Royale</div>
+    <div style="position:absolute;left:228px;top:456px;font:500 30px 'Roboto';color:#f1f1f1;">@TheDiamondRoyale</div>
+    <div style="position:absolute;left:228px;top:500px;font:500 28px 'Roboto';color:#f1f1f1;">
+      <svg viewBox="0 0 24 24" width="30" height="30" style="vertical-align:-7px;margin-right:6px;"><path d="{ICON['link']}" fill="#f1f1f1"/></svg>bit.ly/4iD7KGP</div>
+    <div id="{sid}-btn" style="position:absolute;left:35px;top:572px;width:890px;height:76px;border-radius:38px;background:#f1f1f1;">
+      <div id="{sid}-b1" style="position:absolute;left:0;right:0;top:0;height:76px;display:flex;align-items:center;justify-content:center;font:500 32px 'Roboto';color:#0f0f0f;">Subscribe</div>
+      <div id="{sid}-b2" style="position:absolute;left:0;right:0;top:0;height:76px;display:flex;align-items:center;justify-content:center;font:500 32px 'Roboto';color:#f1f1f1;opacity:0;">
+        <svg viewBox="0 0 24 24" width="34" height="34" style="vertical-align:-7px;margin-right:10px;"><path d="{ICON['bell']}" fill="#f1f1f1"/></svg>Subscribed
+        <svg viewBox="0 0 24 24" width="30" height="30" style="vertical-align:-7px;margin-left:6px;"><path d="M7 10l5 5 5-5z" fill="#f1f1f1"/></svg></div>
+    </div>
   </div>
-  {sparks_html(sid, 12)}
   <div id="{sid}-tap" class="tap"></div>"""
 js = head_js(sid, 2) + f"""
-    tl.fromTo("#{sid}-card",{{y:140,opacity:0,filter:"blur(14px)"}},{{y:0,opacity:1,filter:"blur(0px)",duration:.6,ease:"expo.out"}},.2);
-    tl.fromTo("#{sid}-av",{{scale:.4,opacity:0}},{{scale:1,opacity:1,duration:.5,ease:"back.out(2)"}},.35);
-    tl.fromTo("#{sid}-ring",{{rotation:0}},{{rotation:200,duration:{dur},ease:"none"}},0);
-    tl.fromTo("#{sid}-name",{{opacity:0,filter:"blur(8px)"}},{{opacity:1,filter:"blur(0px)",duration:.2}},.5);
-    tl.fromTo("#{sid}-handle",{{opacity:0,filter:"blur(8px)"}},{{opacity:1,filter:"blur(0px)",duration:.2}},.6);
-    tl.fromTo("#{sid}-btn",{{scale:.6,opacity:0}},{{scale:1,opacity:1,duration:.4,ease:"back.out(2)"}},.68);""" + tap_js(sid, 900, 1700, 540, 1272, .9, 1.25) + f"""
-    tl.to("#{sid}-btn",{{scale:.92,duration:.08}},1.25);
-    tl.to("#{sid}-btn",{{scale:1,boxShadow:"0 20px 90px rgba(243,197,107,.8)",duration:.3,ease:"back.out(3)"}},1.33);
-    {sparks_js(sid, 540, 1272, 1.28, 12, 230)}
-    tl.to("#{sid}-tap",{{opacity:0,duration:.2}},1.7);"""
-scenes.append((sid, dur, scene(sid, dur, body, js)))
+    tl.fromTo("#{sid}-card",{{y:260,scale:.9,opacity:0,filter:"blur(14px)"}},{{y:0,scale:1,opacity:1,filter:"blur(0px)",duration:.65,ease:"expo.out"}},.2);""" + tap_js(sid, 900, 1750, 540, 1258, 1.0, 1.4) + f"""
+    tl.to("#{sid}-btn",{{scale:.96,duration:.08}},1.4);
+    tl.to("#{sid}-btn",{{scale:1,backgroundColor:"#272727",duration:.25,ease:"power2.out"}},1.48);
+    tl.to("#{sid}-b1",{{opacity:0,duration:.08}},1.46);
+    tl.to("#{sid}-b2",{{opacity:1,duration:.12}},1.5);
+    tl.to("#{sid}-tap",{{opacity:0,duration:.2}},1.9);"""
+scenes.append((sid, dur, scene(sid, dur, body, js, YT_CSS)))
 
 os.makedirs(f"{OUT}/compositions", exist_ok=True)
 for sid, dur, html in scenes:
@@ -310,7 +320,7 @@ sfx = [  # (id, archivo, tiempo, volumen, duración)
     ("a-wh3", "whoosh-short", S["s4"] - .2, .6, .57), ("a-pop4", "pop", S["s4"] + .12, .8, .7),
     ("a-tap4", "click", S["s4"] + .75, .9, .37), ("a-tap4b", "click-soft", S["s4"] + 1.5, 1, .37),
     ("a-wh4", "whoosh", S["s5"] - .24, .55, .57), ("a-hit", "impact-bass-1", S["s5"] + .1, .7, 2.1),
-    ("a-tap5", "click", S["s5"] + 1.25, .9, .37), ("a-spark5", "sparkle", S["s5"] + 1.28, .6, 1.8),
+    ("a-tap5", "click", S["s5"] + 1.4, .9, .37), 
 ]
 audio = "\n".join(
     f'      <audio id="{i}" class="clip" src="assets/sfx/{f}.mp3" data-start="{t:.2f}" data-duration="{d}" '
@@ -331,7 +341,7 @@ index = f"""<!doctype html>
     <style>
       :root {{ --night:#140b26; --pink:#ff5d8f; --teal:#2fb3b0; --gold:#f3c56b; --ice:#7fe3ff; }}
       * {{ margin:0; padding:0; box-sizing:border-box; }}
-      html, body {{ width:1080px; height:1920px; overflow:hidden; background:var(--night); }}
+      html, body {{ width:1080px; height:1920px; overflow:hidden; background:#000; }}
       #root {{ position:relative; width:100%; height:100%; font-family:'Outfit',sans-serif; color:#fff; }}
       #bg {{ position:absolute; inset:0; background:
           radial-gradient(120% 60% at 50% 78%, #ff5d8f 0%, #b23a8f 22%, #4a1d6e 45%, #140b26 72%); }}
@@ -359,12 +369,6 @@ index = f"""<!doctype html>
   </head>
   <body>
     <div id="root" data-composition-id="main" data-start="0" data-duration="{total}" data-width="1080" data-height="1920">
-      <div id="bg"></div>
-      <div id="sun"></div>
-      <div id="floor" data-layout-allow-overflow><div id="grid"></div></div>
-      <div id="horizon"></div>
-      {spark_stars}
-      <div id="vignette"></div>
       <div id="note">Giveaway rules at the link · Not affiliated with Rockstar Games</div>
       <div id="bar">{seg}</div>
 {hosts}
@@ -372,8 +376,6 @@ index = f"""<!doctype html>
     </div>
     <script>
       const tl = gsap.timeline({{ paused: true }});
-      tl.fromTo("#grid",{{backgroundPosition:"0px 0px"}},{{backgroundPosition:"0px {120*12}px",duration:{total},ease:"none"}},0);
-      tl.fromTo("#sun",{{y:30}},{{y:-30,duration:{total},ease:"none"}},0);
       {seg_js}
       window.__timelines["main"] = tl;
     </script>

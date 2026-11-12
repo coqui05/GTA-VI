@@ -21,24 +21,37 @@
   background:radial-gradient(circle,rgba(255,255,255,.95) 0 38%,rgba(255,255,255,.35) 40% 100%);
   box-shadow:0 10px 30px rgba(0,0,0,.45); z-index:20; }
 .spark { position:absolute; left:0; top:0; width:22px; height:22px; margin:-11px 0 0 -11px; }
+
+#s5-tag { top:300px; }
+#s5-num { top:330px; height:230px; }
+#s5-num .num-glow, #s5-num .num-fill { font-size:220px; }
+#s5-label { top:568px; font-size:62px; }
+.yt { position:absolute; left:60px; top:650px; width:960px; height:680px; background:#0f0f0f; border-radius:40px;
+  overflow:hidden; font-family:'Roboto',sans-serif; color:#f1f1f1; box-shadow:0 40px 120px rgba(0,0,0,.7);
+  border:1px solid rgba(255,255,255,.08); }
 </style>
   <div id="root" data-composition-id="s5" data-width="1080" data-height="1920" data-layout-allow-overlap>
     <div id="s5-stage" style="position:absolute;inset:0;transform-origin:540px 800px;">
   <div id="s5-tag" class="step-tag" data-layout-allow-occlusion>STEP 05</div>
   <div id="s5-num" class="num-wrap" data-layout-allow-occlusion><div class="num-glow" data-layout-allow-occlusion>5</div><div class="num-fill">5</div></div>
   <div id="s5-label" class="label"><span id="s5-w0" class="">VISIT THE</span><span id="s5-w1" class="acc">CHANNEL</span></div>
-  <div id="s5-card" class="glass" style="left:120px;top:950px;width:840px;height:380px;border-radius:48px;">
-    <div id="s5-ring" style="position:absolute;left:325px;top:-60px;width:190px;height:190px;border-radius:50%;
-         background:conic-gradient(#ff5d8f,#f3c56b,#7fe3ff,#2fb3b0,#ff5d8f);"></div>
-    <div style="position:absolute;left:333px;top:-52px;width:174px;height:174px;border-radius:50%;background:#140b26;"></div>
-    <img id="s5-av" src="assets/avatar.jpg" style="position:absolute;left:339px;top:-46px;width:162px;height:162px;border-radius:50%;object-fit:cover;" />
-    <div id="s5-name" style="position:absolute;left:0;right:0;top:150px;text-align:center;font:400 58px/1 'Archivo Black';">The Diamond Royale</div>
-    <div id="s5-handle" style="position:absolute;left:0;right:0;top:224px;text-align:center;font:500 36px 'Outfit';color:rgba(255,255,255,.7);">@thediamondroyale</div>
-    <div id="s5-btn" style="position:absolute;left:200px;top:278px;width:440px;height:88px;border-radius:44px;
-         background:linear-gradient(135deg,#ff5d8f,#f3c56b);box-shadow:0 20px 60px rgba(255,93,143,.5);
-         text-align:center;font:400 38px/88px 'Archivo Black';letter-spacing:.04em;color:#140b26;">VISIT CHANNEL</div>
+  <div id="s5-card" class="yt">
+    <svg viewBox="0 0 24 24" width="48" height="48" style="position:absolute;left:30px;top:26px;"><path d="M15.4 4.6L14 3.2 5.2 12l8.8 8.8 1.4-1.4L8 12z" fill="#f1f1f1"/></svg>
+    <svg viewBox="0 0 24 24" width="46" height="46" style="position:absolute;left:800px;top:27px;"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="#f1f1f1" stroke-width="2"/><path d="M15.5 15.5L21 21" stroke="#f1f1f1" stroke-width="2.2" stroke-linecap="round"/></svg>
+    <svg viewBox="0 0 24 24" width="46" height="46" style="position:absolute;left:880px;top:27px;"><circle cx="12" cy="5" r="2" fill="#f1f1f1"/><circle cx="12" cy="12" r="2" fill="#f1f1f1"/><circle cx="12" cy="19" r="2" fill="#f1f1f1"/></svg>
+    <img id="s5-banner" src="assets/banner.jpg" style="position:absolute;left:35px;top:100px;width:890px;height:245px;border-radius:20px;object-fit:cover;" />
+    <img id="s5-av" src="assets/avatar-yt.jpg" style="position:absolute;left:35px;top:378px;width:160px;height:160px;border-radius:50%;object-fit:cover;" />
+    <div style="position:absolute;left:228px;top:392px;font:700 48px/1.1 'Roboto';letter-spacing:-.01em;">The Diamond Royale</div>
+    <div style="position:absolute;left:228px;top:456px;font:500 30px 'Roboto';color:#f1f1f1;">@TheDiamondRoyale</div>
+    <div style="position:absolute;left:228px;top:500px;font:500 28px 'Roboto';color:#f1f1f1;">
+      <svg viewBox="0 0 24 24" width="30" height="30" style="vertical-align:-7px;margin-right:6px;"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="#f1f1f1"/></svg>bit.ly/4iD7KGP</div>
+    <div id="s5-btn" style="position:absolute;left:35px;top:572px;width:890px;height:76px;border-radius:38px;background:#f1f1f1;">
+      <div id="s5-b1" style="position:absolute;left:0;right:0;top:0;height:76px;display:flex;align-items:center;justify-content:center;font:500 32px 'Roboto';color:#0f0f0f;">Subscribe</div>
+      <div id="s5-b2" style="position:absolute;left:0;right:0;top:0;height:76px;display:flex;align-items:center;justify-content:center;font:500 32px 'Roboto';color:#f1f1f1;opacity:0;">
+        <svg viewBox="0 0 24 24" width="34" height="34" style="vertical-align:-7px;margin-right:10px;"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z" fill="#f1f1f1"/></svg>Subscribed
+        <svg viewBox="0 0 24 24" width="30" height="30" style="vertical-align:-7px;margin-left:6px;"><path d="M7 10l5 5 5-5z" fill="#f1f1f1"/></svg></div>
+    </div>
   </div>
-  <div id="s5-sp0" class="spark"><svg viewBox="0 0 24 24" width="22" height="22" ><path d="M6 3h12l4 6-10 12L2 9z" fill="#7fe3ff"/></svg></div><div id="s5-sp1" class="spark"><svg viewBox="0 0 24 24" width="22" height="22" ><path d="M6 3h12l4 6-10 12L2 9z" fill="#f3c56b"/></svg></div><div id="s5-sp2" class="spark"><svg viewBox="0 0 24 24" width="22" height="22" ><path d="M6 3h12l4 6-10 12L2 9z" fill="#7fe3ff"/></svg></div><div id="s5-sp3" class="spark"><svg viewBox="0 0 24 24" width="22" height="22" ><path d="M6 3h12l4 6-10 12L2 9z" fill="#f3c56b"/></svg></div><div id="s5-sp4" class="spark"><svg viewBox="0 0 24 24" width="22" height="22" ><path d="M6 3h12l4 6-10 12L2 9z" fill="#7fe3ff"/></svg></div><div id="s5-sp5" class="spark"><svg viewBox="0 0 24 24" width="22" height="22" ><path d="M6 3h12l4 6-10 12L2 9z" fill="#f3c56b"/></svg></div><div id="s5-sp6" class="spark"><svg viewBox="0 0 24 24" width="22" height="22" ><path d="M6 3h12l4 6-10 12L2 9z" fill="#7fe3ff"/></svg></div><div id="s5-sp7" class="spark"><svg viewBox="0 0 24 24" width="22" height="22" ><path d="M6 3h12l4 6-10 12L2 9z" fill="#f3c56b"/></svg></div><div id="s5-sp8" class="spark"><svg viewBox="0 0 24 24" width="22" height="22" ><path d="M6 3h12l4 6-10 12L2 9z" fill="#7fe3ff"/></svg></div><div id="s5-sp9" class="spark"><svg viewBox="0 0 24 24" width="22" height="22" ><path d="M6 3h12l4 6-10 12L2 9z" fill="#f3c56b"/></svg></div><div id="s5-sp10" class="spark"><svg viewBox="0 0 24 24" width="22" height="22" ><path d="M6 3h12l4 6-10 12L2 9z" fill="#7fe3ff"/></svg></div><div id="s5-sp11" class="spark"><svg viewBox="0 0 24 24" width="22" height="22" ><path d="M6 3h12l4 6-10 12L2 9z" fill="#f3c56b"/></svg></div>
   <div id="s5-tap" class="tap"></div>
     </div>
   </div>
@@ -49,30 +62,15 @@
     tl.fromTo("#s5-tag",{opacity:0,y:-24},{opacity:1,y:0,duration:.45,ease:"expo.out"},.05);
     tl.fromTo("#s5-w0",{opacity:0,filter:"blur(8px)",y:18},{opacity:1,filter:"blur(0px)",y:0,duration:.22,ease:"power3.out"},0.14);
     tl.fromTo("#s5-w1",{opacity:0,filter:"blur(8px)",y:18},{opacity:1,filter:"blur(0px)",y:0,duration:.22,ease:"power3.out"},0.22);
-    tl.fromTo("#s5-card",{y:140,opacity:0,filter:"blur(14px)"},{y:0,opacity:1,filter:"blur(0px)",duration:.6,ease:"expo.out"},.2);
-    tl.fromTo("#s5-av",{scale:.4,opacity:0},{scale:1,opacity:1,duration:.5,ease:"back.out(2)"},.35);
-    tl.fromTo("#s5-ring",{rotation:0},{rotation:200,duration:3.4,ease:"none"},0);
-    tl.fromTo("#s5-name",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:.2},.5);
-    tl.fromTo("#s5-handle",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:.2},.6);
-    tl.fromTo("#s5-btn",{scale:.6,opacity:0},{scale:1,opacity:1,duration:.4,ease:"back.out(2)"},.68);
-    tl.fromTo("#s5-tap",{x:900,y:1700,opacity:0,scale:1.3},{x:540,y:1272,opacity:1,scale:1,duration:0.35,ease:"power3.out"},0.9);
-    tl.to("#s5-tap",{scale:.72,duration:.08,ease:"power2.in"},1.25);
-    tl.to("#s5-tap",{scale:1,duration:.22,ease:"back.out(3)"},1.33);
-    tl.to("#s5-btn",{scale:.92,duration:.08},1.25);
-    tl.to("#s5-btn",{scale:1,boxShadow:"0 20px 90px rgba(243,197,107,.8)",duration:.3,ease:"back.out(3)"},1.33);
-    tl.fromTo("#s5-sp0",{x:540,y:1272,opacity:1,scale:.4,rotation:0},{x:760,y:1340,opacity:0,scale:1.2,rotation:-120,duration:.7,ease:"power3.out"},1.28);
-    tl.fromTo("#s5-sp1",{x:540,y:1272,opacity:1,scale:.4,rotation:0},{x:735,y:1483,opacity:0,scale:1.2,rotation:120,duration:.7,ease:"power3.out"},1.28);
-    tl.fromTo("#s5-sp2",{x:540,y:1272,opacity:1,scale:.4,rotation:0},{x:617,y:1608,opacity:0,scale:1.2,rotation:-120,duration:.7,ease:"power3.out"},1.28);
-    tl.fromTo("#s5-sp3",{x:540,y:1272,opacity:1,scale:.4,rotation:0},{x:472,y:1492,opacity:0,scale:1.2,rotation:120,duration:.7,ease:"power3.out"},1.28);
-    tl.fromTo("#s5-sp4",{x:540,y:1272,opacity:1,scale:.4,rotation:0},{x:329,y:1467,opacity:0,scale:1.2,rotation:-120,duration:.7,ease:"power3.out"},1.28);
-    tl.fromTo("#s5-sp5",{x:540,y:1272,opacity:1,scale:.4,rotation:0},{x:204,y:1349,opacity:0,scale:1.2,rotation:120,duration:.7,ease:"power3.out"},1.28);
-    tl.fromTo("#s5-sp6",{x:540,y:1272,opacity:1,scale:.4,rotation:0},{x:320,y:1204,opacity:0,scale:1.2,rotation:-120,duration:.7,ease:"power3.out"},1.28);
-    tl.fromTo("#s5-sp7",{x:540,y:1272,opacity:1,scale:.4,rotation:0},{x:345,y:1061,opacity:0,scale:1.2,rotation:120,duration:.7,ease:"power3.out"},1.28);
-    tl.fromTo("#s5-sp8",{x:540,y:1272,opacity:1,scale:.4,rotation:0},{x:463,y:936,opacity:0,scale:1.2,rotation:-120,duration:.7,ease:"power3.out"},1.28);
-    tl.fromTo("#s5-sp9",{x:540,y:1272,opacity:1,scale:.4,rotation:0},{x:608,y:1052,opacity:0,scale:1.2,rotation:120,duration:.7,ease:"power3.out"},1.28);
-    tl.fromTo("#s5-sp10",{x:540,y:1272,opacity:1,scale:.4,rotation:0},{x:751,y:1077,opacity:0,scale:1.2,rotation:-120,duration:.7,ease:"power3.out"},1.28);
-    tl.fromTo("#s5-sp11",{x:540,y:1272,opacity:1,scale:.4,rotation:0},{x:876,y:1195,opacity:0,scale:1.2,rotation:120,duration:.7,ease:"power3.out"},1.28);
-    tl.to("#s5-tap",{opacity:0,duration:.2},1.7);
+    tl.fromTo("#s5-card",{y:260,scale:.9,opacity:0,filter:"blur(14px)"},{y:0,scale:1,opacity:1,filter:"blur(0px)",duration:.65,ease:"expo.out"},.2);
+    tl.fromTo("#s5-tap",{x:900,y:1750,opacity:0,scale:1.3},{x:540,y:1258,opacity:1,scale:1,duration:0.40,ease:"power3.out"},1.0);
+    tl.to("#s5-tap",{scale:.72,duration:.08,ease:"power2.in"},1.4);
+    tl.to("#s5-tap",{scale:1,duration:.22,ease:"back.out(3)"},1.48);
+    tl.to("#s5-btn",{scale:.96,duration:.08},1.4);
+    tl.to("#s5-btn",{scale:1,backgroundColor:"#272727",duration:.25,ease:"power2.out"},1.48);
+    tl.to("#s5-b1",{opacity:0,duration:.08},1.46);
+    tl.to("#s5-b2",{opacity:1,duration:.12},1.5);
+    tl.to("#s5-tap",{opacity:0,duration:.2},1.9);
     window.__timelines["s5"] = tl;
   </script>
 </template>
