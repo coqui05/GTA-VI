@@ -86,3 +86,6 @@ Cuando Coqui mande un video para hacer «algo así para mi app»:
 - El fondo negro de la plantilla se reemplaza por el final del video de Coqui (oscurecido) o se pone a continuación.
 - Videos de la ruleta: el giro se muestra **completo y sin cortes** para que se vea que el resultado es real.
 - No se ponen cifras falsas de suscriptores ni videos en la captura del canal.
+
+## Receta exacta
+Para hacer cada video igual al aprobado, sigue paso a paso `proyectos/promo-app/RECETA-VIDEO.md`.
