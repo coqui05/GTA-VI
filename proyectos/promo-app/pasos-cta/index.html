@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      :root { --night:#140b26; --pink:#ff5d8f; --teal:#2fb3b0; --gold:#f3c56b; --ice:#7fe3ff; }
+      * { margin:0; padding:0; box-sizing:border-box; }
+      html, body { width:1080px; height:1920px; overflow:hidden; background:var(--night); }
+      #root { position:relative; width:100%; height:100%; font-family:'Outfit',sans-serif; color:#fff; }
+      #bg { position:absolute; inset:0; background:
+          radial-gradient(120% 60% at 50% 78%, #ff5d8f 0%, #b23a8f 22%, #4a1d6e 45%, #140b26 72%); }
+      #sun { position:absolute; left:250px; top:1130px; width:580px; height:580px; border-radius:50%;
+          background:linear-gradient(180deg,#f3c56b 0%,#ff8a7a 45%,#ff5d8f 80%);
+          -webkit-mask:linear-gradient(180deg,#000 0 52%,transparent 52% 56%,#000 56% 63%,transparent 63% 68%,#000 68% 74%,transparent 74% 80%,#000 80% 85%,transparent 85%);
+          filter:drop-shadow(0 0 60px rgba(255,93,143,.7)); }
+      #floor { position:absolute; left:0; right:0; top:1440px; bottom:0; overflow:hidden; perspective:700px; perspective-origin:50% 0;
+          background:linear-gradient(180deg,#2a0f45,#140b26); }
+      #grid { position:absolute; left:-1200px; right:-1200px; top:0; height:620px; transform-origin:50% 0;
+          transform:rotateX(62deg);
+          background-image:linear-gradient(rgba(127,227,255,.55) 3px,transparent 3px),
+                           linear-gradient(90deg,rgba(127,227,255,.55) 3px,transparent 3px);
+          background-size:120px 120px; }
+      #horizon { position:absolute; left:0; right:0; top:1434px; height:8px; background:#ffd0de;
+          box-shadow:0 0 30px 10px rgba(255,93,143,.8); }
+      #vignette { position:absolute; inset:0; background:radial-gradient(90% 70% at 50% 45%,transparent 55%,rgba(8,3,20,.7)); }
+      .star { position:absolute; }
+      #bar { position:absolute; left:0; right:0; top:240px; display:flex; justify-content:center; gap:14px; }
+      .seg { width:150px; height:10px; border-radius:5px; background:rgba(255,255,255,.18); overflow:hidden; }
+      .seg-fill { width:100%; height:100%; transform-origin:0 50%; background:linear-gradient(90deg,var(--pink),var(--gold)); }
+      #note { position:absolute; left:0; right:0; top:180px; text-align:center; font:500 28px 'Outfit';
+          color:rgba(255,255,255,.72); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="12.8" data-width="1080" data-height="1920">
+      <div id="bg"></div>
+      <div id="sun"></div>
+      <div id="floor" data-layout-allow-overflow><div id="grid"></div></div>
+      <div id="horizon"></div>
+      <svg class="star" viewBox="0 0 24 24" width="26" height="26" style="left:90px;top:420px;opacity:0.5"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z" fill="#fff"/></svg><svg class="star" viewBox="0 0 24 24" width="20" height="20" style="left:960px;top:380px;opacity:0.45"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z" fill="#fff"/></svg><svg class="star" viewBox="0 0 24 24" width="18" height="18" style="left:150px;top:1180px;opacity:0.35"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z" fill="#fff"/></svg><svg class="star" viewBox="0 0 24 24" width="24" height="24" style="left:930px;top:980px;opacity:0.4"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z" fill="#fff"/></svg><svg class="star" viewBox="0 0 24 24" width="14" height="14" style="left:60px;top:760px;opacity:0.35"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z" fill="#fff"/></svg><svg class="star" viewBox="0 0 24 24" width="16" height="16" style="left:1010px;top:700px;opacity:0.35"><path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z" fill="#fff"/></svg>
+      <div id="vignette"></div>
+      <div id="note">Giveaway rules at the link · Not affiliated with Rockstar Games</div>
+      <div id="bar"><div class="seg"><div id="seg0" class="seg-fill"></div></div><div class="seg"><div id="seg1" class="seg-fill"></div></div><div class="seg"><div id="seg2" class="seg-fill"></div></div><div class="seg"><div id="seg3" class="seg-fill"></div></div><div class="seg"><div id="seg4" class="seg-fill"></div></div></div>
+      <div id="s1" data-composition-id="s1" data-composition-src="compositions/s1.html" data-start="0.0" data-duration="2.0" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="s2" data-composition-id="s2" data-composition-src="compositions/s2.html" data-start="2.0" data-duration="2.2" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="s3" data-composition-id="s3" data-composition-src="compositions/s3.html" data-start="4.2" data-duration="3.0" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="s4" data-composition-id="s4" data-composition-src="compositions/s4.html" data-start="7.2" data-duration="2.2" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="s5" data-composition-id="s5" data-composition-src="compositions/s5.html" data-start="9.4" data-duration="3.4" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <audio id="a-pop1" class="clip" src="assets/sfx/pop.mp3" data-start="0.05" data-duration="0.7" data-track-index="10" data-volume="0.8"></audio>
+      <audio id="a-tap1" class="clip" src="assets/sfx/click-soft.mp3" data-start="1.00" data-duration="0.37" data-track-index="11" data-volume="1"></audio>
+      <audio id="a-spark1" class="clip" src="assets/sfx/sparkle.mp3" data-start="1.05" data-duration="1.6" data-track-index="12" data-volume="0.55"></audio>
+      <audio id="a-wh1" class="clip" src="assets/sfx/whoosh-short.mp3" data-start="1.80" data-duration="0.57" data-track-index="10" data-volume="0.6"></audio>
+      <audio id="a-pop2" class="clip" src="assets/sfx/pop.mp3" data-start="2.12" data-duration="0.7" data-track-index="11" data-volume="0.8"></audio>
+      <audio id="a-tap2" class="clip" src="assets/sfx/click.mp3" data-start="2.80" data-duration="0.37" data-track-index="12" data-volume="0.9"></audio>
+      <audio id="a-tap2b" class="clip" src="assets/sfx/click-soft.mp3" data-start="3.38" data-duration="0.37" data-track-index="10" data-volume="1"></audio>
+      <audio id="a-wh2" class="clip" src="assets/sfx/whoosh.mp3" data-start="3.98" data-duration="0.57" data-track-index="11" data-volume="0.55"></audio>
+      <audio id="a-pop3" class="clip" src="assets/sfx/pop.mp3" data-start="4.32" data-duration="0.7" data-track-index="12" data-volume="0.8"></audio>
+      <audio id="a-type" class="clip" src="assets/sfx/typing.mp3" data-start="4.75" data-duration="0.85" data-track-index="10" data-volume="0.5"></audio>
+      <audio id="a-tap3" class="clip" src="assets/sfx/click-soft.mp3" data-start="5.71" data-duration="0.37" data-track-index="11" data-volume="1"></audio>
+      <audio id="a-wh3" class="clip" src="assets/sfx/whoosh-short.mp3" data-start="7.00" data-duration="0.57" data-track-index="12" data-volume="0.6"></audio>
+      <audio id="a-pop4" class="clip" src="assets/sfx/pop.mp3" data-start="7.32" data-duration="0.7" data-track-index="10" data-volume="0.8"></audio>
+      <audio id="a-tap4" class="clip" src="assets/sfx/click.mp3" data-start="7.95" data-duration="0.37" data-track-index="11" data-volume="0.9"></audio>
+      <audio id="a-tap4b" class="clip" src="assets/sfx/click-soft.mp3" data-start="8.70" data-duration="0.37" data-track-index="12" data-volume="1"></audio>
+      <audio id="a-wh4" class="clip" src="assets/sfx/whoosh.mp3" data-start="9.16" data-duration="0.57" data-track-index="10" data-volume="0.55"></audio>
+      <audio id="a-hit" class="clip" src="assets/sfx/impact-bass-1.mp3" data-start="9.50" data-duration="2.1" data-track-index="11" data-volume="0.7"></audio>
+      <audio id="a-tap5" class="clip" src="assets/sfx/click.mp3" data-start="10.65" data-duration="0.37" data-track-index="12" data-volume="0.9"></audio>
+      <audio id="a-spark5" class="clip" src="assets/sfx/sparkle.mp3" data-start="10.68" data-duration="1.8" data-track-index="10" data-volume="0.6"></audio>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#grid",{backgroundPosition:"0px 0px"},{backgroundPosition:"0px 1440px",duration:12.8,ease:"none"},0);
+      tl.fromTo("#sun",{y:30},{y:-30,duration:12.8,ease:"none"},0);
+      tl.fromTo("#seg0",{scaleX:0.6},{scaleX:1,duration:.4,ease:"power3.out"},0.0);
+      tl.fromTo("#seg1",{scaleX:0},{scaleX:1,duration:.4,ease:"power3.out"},2.0);
+      tl.fromTo("#seg2",{scaleX:0},{scaleX:1,duration:.4,ease:"power3.out"},4.2);
+      tl.fromTo("#seg3",{scaleX:0},{scaleX:1,duration:.4,ease:"power3.out"},7.2);
+      tl.fromTo("#seg4",{scaleX:0},{scaleX:1,duration:.4,ease:"power3.out"},9.4);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>
