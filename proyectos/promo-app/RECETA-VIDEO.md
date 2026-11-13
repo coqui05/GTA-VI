@@ -89,6 +89,7 @@ El sonido sale del HTML original de la ruleta: un "tic" por casilla (onda cuadra
      |---|---|---|---|---|---|---|---|
      | IMG_3105 (`2026-11-12-ruleta`) | 8.8 | 6.25 | 4.167 / 4.633 | 0.65 | 64.5 | 0.45 | 6.27 |
      | IMG_3108 (`2026-11-12-ruleta-2`) | 10.26 | 7.81 | 5.55 / 5.967 | 2.21 | 53.08 | 0.623 | 7.83 |
+     | IMG_3154 (`2026-11-13-ruleta-3`) | 10.8 | 8.05 | 5.633 / 6.05 | 2.45 | 42.61 | 0.693 | 8.07 |
 4. Genera el audio. Argumentos: duración del video, T0, E, R0 y el segundo de la fanfarria (= `T_RESULTADO`):
    ```bash
    python3 -I herramientas/sonido_ruleta.py generar $NUEVO/assets/sfx/ruleta-giro.wav 8.8 0.65 64.5 0.45 6.27
@@ -186,6 +187,14 @@ Dura 14 s y la genera `generar.py`. Ya está aprobada por Coqui (v3):
 - `intro.html` admite varias etapas de texto (ver `2026-11-12-vasos/compositions/intro.html`): gancho → durante el
   juego → al elegir → al acertar → en el premio (con golpe de cámara y destello).
 
+## Estilo "más llamativo" (ruleta 3)
+
+`2026-11-13-ruleta-3/compositions/intro.html`: frases cortas que cambian con cada momento del giro (antes, al
+arrancar, al frenar, al final). Cada palabra entra con golpe (escala 2,2 → 1 con desenfoque), la cámara empuja en
+cada frase y al ganar hay destello, sacudida, zoom, tinte rosa y un texto gigante dorado.
+Voz: se puede usar `hyperframes tts` (Kokoro, gratis y local), pero necesita `pip install kokoro-onnx soundfile`
+y en esta nube ese permiso está bloqueado. Pídele a Coqui que lo autorice antes de intentarlo.
+
 ## Textos: nunca repetir
 
 Coqui pidió **no repetir nunca** los textos de un video a otro, ni en el video ni en los títulos. Antes de escribir,
@@ -196,6 +205,7 @@ revisa esta lista y agrega los tuyos al terminar.
 | Ruleta 1 | CAN I LAND GTA VI? / IT LANDED ON GTA VI! | This channel is fire | I Spun the Wheel… and It Landed on GTA VI 😱🎰 |
 | Ruleta 2 | (mismos que ruleta 1, hecho antes de esta regla) | This channel is fire | Spun It Again… GTA VI AGAIN?! 😱🎰 |
 | Vasos | KEEP YOUR EYE ON THE BALL / DON'T BLINK... / WHICH CUP HAS IT? / FOUND IT! / PERFECT PICK! | Need more of these! | Can You Track the Ball? I Went for GTA VI 👀🥤 |
+| Ruleta 3 | NO RETRIES. / ALL OR NOTHING. / HERE WE GO! / SLOWING DOWN... / COME ON... COME ON! / JACKPOT!! / TOP PRIZE | Insane luck bro | (ver chat) |
 
 Los títulos de la plantilla de 5 pasos (LIKE THE VIDEO, SUBSCRIBE, etc.) son fijos: son la plantilla.
 

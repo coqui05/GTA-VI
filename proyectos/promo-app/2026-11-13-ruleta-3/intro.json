@@ -1,0 +1,9 @@
+{
+ "duration": 10.8,
+ "endbg": "assets/footage/fondo-final.jpg",
+ "comment": "Insane luck bro",
+ "sfx": [
+  ["i-ruleta", "ruleta-giro.wav", 0.0, 0.9, 10.8],
+  ["i-wh", "whoosh", 10.5, 0.6, 0.57]
+ ]
+}
